@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  appearance: 0;
+  border: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Inika";
+  font-size: 0.88rem;
+  user-select: none;
+  overflow: hidden;
+  color: #ffffff;
+  background-color: #1c242f;
+}
+
+hr {
+  border: 0;
+  clear: both;
+  display: block;
+  width: 96%;
+  background-color: #000000;
+  height: 1px;
+  margin: 1rem 0;
+}
+
+a {
+  color: #000000;
+}
+
+p {
+  font-size: 1.1rem;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+.container {
+  display: grid;
+  width: 100%;
+  margin: 0;
+  gap: 0.5rem;
+  grid-template-rows: 6rem auto 4rem;
+  grid-template-columns: 20rem auto;
+  grid-template-areas:
+    "aside header"
+    "aside main"
+    "aside footer";
+}
+
+aside {
+  grid-area: aside;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+aside .toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.4rem 1rem;
+}
+
+aside .toggle .logo {
+  display: flex;
+  gap: 0.5rem;
+  height: 3rem;
+}
+
+aside .toggle .close {
+  padding-right: 1rem;
+  display: none;
+}
+
+aside .sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 15px;
+  height: 88vh;
+  position: relative;
+  margin: 1rem 0;
+}
+
+aside .sidebar a {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  font-size: 1.3rem;
+  height: 5rem;
+  gap: 1rem;
+  position: relative;
+  margin-left: 2rem;
+}
+
+aside .sidebar a span {
+  font: 1.6rem;
+}
+
+aside .sidebar a h3 {
+  font-weight: lighter;
+}
+
+aside .sidebar a.active {
+  width: 95%;
+  color: #ffffff;
+  background-color: #1c242f;
+  margin-left: 1rem;
+  border-radius: 2rem 0 0 2rem;
+}
+
+aside .sidebar a.active span {
+  margin-left: 1rem;
+}
+
+header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+  padding: 1rem;
+  color: #000000;
+  background-color: #ffffff;
+}
+
+header .header-text {
+  flex-direction: column;
+  margin-right: auto;
+}
+
+header #menu-btn {
+  display: none;
+  float: right;
+  background-color: #ffffff;
+}
+
+main {
+  grid-area: main;
+  margin: 0.5rem;
+}
+
+footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: center;
+  color: #000000;
+  background-color: #ffffff;
+  margin-right: 0.5rem;
+  padding-top: 0.5rem;
+}
