@@ -2,8 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inter:wght@100..900&display=swap" />
@@ -16,13 +16,10 @@
     <!-- Penyimpanan Icon -->
     <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon" />
     <title>Vending Machine New Jersey</title>
-</head>
 
 <body>
-
     <!-- Header Start -->
     <header class="header">
-
         <div class="logo">
             <img src="assets/images/vending-machine.png" alt="logo" />
             <div class="logo-text">
@@ -34,23 +31,14 @@
         <!--Navbar Start -->
         <nav class="nav">
             <ul>
-                <li class="logo-responsif"><img src="assets/images/vending-machine.png" alt="Logo"></li>
                 <li><a href="#dashboard">Dashboard</a></li>
                 <li><a href="#insight">Insight</a></li>
                 <li><a href="#team">Team</a></li>
-                <li><a href="#abouthUs">Abouth US</a></li>
+                <li><a href="#abouthUs">Abouth Us</a></li>
                 <li><a href="#Feedback">Feedback</a></li>
             </ul>
         </nav>
         <!--End Navbar -->
-
-        <!--Hamburger Menu Bar Start -->
-        <div class="menu-toggle">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <!-- End Hamburger Menu Bar Start -->
     </header>
 
     <div class="blur-overlay"></div>
@@ -58,27 +46,156 @@
 
 
     <!-- Dashboard -->
-    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
-
-    <section class="dashboard" id="home">
-        <main class="content">
-            <h1></h1>
-            <p></p>
-            <a href=""></a>
-        </main>
+    <section>
+        <div>
+            <h2>TREND AOV</h2>
+            <div style="width: 500px; height: 300px;">
+                <canvas id="aovChart"></canvas>
+            </div>
+        </div>
+        <div>
+            <h2>TOTAL REVENUE PER MONTH</h2>
+            <div style="width: 500px; height: 300px;">
+                <canvas id="revenueChart"></canvas>
+            </div>
+        </div>
+        <div>
+            <h2>PRODUCTS VARIATIONS</h2>
+            <div style="width: 500px; height: 300px;">
+                <canvas id="variationChart"></canvas>
+            </div>
+        </div>
+        <div>
+            <h2>PRODUCT SALES BY CATEGORY</h2>
+            <div style="width: 500px; height: 300px;">
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </div>
+        <div>
+            <h2>MONTHLY SALES BASED ON LOCATION</h2>
+            <div style="width: 600px; height: 500px;">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
     </section>
-
     <!-- End Dashboard -->
-
     <!-- Insight -->
     <section class="insight" id="insight">
-        <main class="content">
-            <h1></h1>
-            <p></p>
-            <a href=""></a>
+        <main class="content" style="display: flex; justify-content: space-between;">
+            <div id="kiri" style=" width: 40%;">
+                <h1 id="judul" style=" position: relative; top: -20px; margin-left: 50px; font-size: 40px;">PROPOSED
+                    <span
+                        style="background-color: rgb(193, 43, 193); padding: 5px 20px; display: inline-block; margin-left: 10px;">SOLUTION</span>
+                </h1>
+                <div id="paragraph" style="margin-left: 50px;">
+                    <h1
+                        style="margin-top: 100px; background-color: rgb(193, 43, 193); width: 60%; padding: 5px 50px 5px 5px;">
+                        HIGHLIGHT !!</h1>
+                    <p style="margin-top: 10px; text-align: justify;">HIGHLIGHT!! Based on the vending machine sales
+                        data, our team found a problem, namely a significant decrease in revenue from July to December.
+                        The decline was up to 9.10% from the previous increase during January to July which
+                        is 17.95%.</p>
+                </div>
+            </div>
+            <div id="kanan" style="position: relative; top: -30px; width: 50%;">
+                <div id="list_container">
+                    <div class="list_kanan">
+                        <span class="no">1</span>
+                        <span class="text_list">Adding the number of products that are most in demand at each vending
+                            machine location.</span>
+                    </div>
+                    <div class="list_kanan">
+                        <span class="no">2</span>
+                        <span class="text_list">Adjust the sales strategy to the months that have high performance to
+                            increase revenue.</span>
+                    </div>
+                    <div class="list_kanan">
+                        <span class="no">3</span>
+                        <span class="text_list">Adjust product variations and prices to customer preferences in each
+                            location to increase purchases.</span>
+                    </div>
+                    <div class="list_kanan">
+                        <span class="no">4</span>
+                        <span class="text_list">Monitor AOV and monthly sales trends regularly to adjust effective sales
+                            strategies.</span>
+                    </div>
+                    <div class="list_kanan">
+                        <span class="no">5</span>
+                        <span class="text_list">Conduct special promotions on certain product categories to encourage
+                            customers to make more purchases.</span>
+                    </div>
+                </div>
+            </div>
         </main>
     </section>
     <!-- End Insight -->
+    <!-- Team -->
+    <section class="team" id="team">
+        <main class="content">
+            <div id="teamjudul" style=" width: 32%; float: left; margin-right: 50px; margin-left: 30px;">
+                <h1 id="judul" style="position: relative; top: -1px; margin-left: 25px; font-size: 40px;">Meet Our </h1>
+                <br>
+                <h2
+                    style="background-color: rgb(193, 43, 193);display:inline-block; position: relative; top: -10px; margin-left: 25px; font-size: 40px;">
+                    Team</h2>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="Indira Dwi Rahma" />
+                <p>Afni Koerun Nisa</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="M. Arfin Aryasatya" />
+                <p>Arkan Ikhwan Hiraqi</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/Dennis-Irwan-Aurelio.jpg" alt="Rama Yanti" />
+                <p>Dennis Irwan Aurelio</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/Indira-Dwi-Rahma.jpg" alt="Rizqi Mahendra Pratama" />
+                <p>Indira Dwi Rahma</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="Afni Koerun Nisa" />
+                <p>M. Arfin Aryasatya</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/Muhammad-Aslam-Daffa.jpg" alt="Muhammad Aslam Daffa" />
+                <p>Muhammad Aslam Daffa</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/Nur-Azizah-Amra.jpg" alt="Wahyuniar" />
+                <p> Nur Azizah Amra </p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/Putra-Pranata-Mauliate-Pakpahan.jpg" alt="Arkan Ikhwan Hiraqi" />
+                <p>Putra Pranata Mauliate P.</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="Nur Azizah Amra" />
+                <p>Rama Yanti</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/Rizqi-Mahendra-Pratama.jpg" alt="Yesy Margharetta Munthe" />
+                <p>Rizqi Mahendra Pratama</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/Wahyuniar.jpeg" alt="Dennis Irwan Aurelio" />
+                <p>Wahyuniar</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/Yesy-Margharetta-Munthe.jpg" alt="Putra Pranata Mauliate P." />
+                <p>Yesy Margharetta Munthe</p>
+            </div>
+            <div class="photo-item">
+                <img src="assets/images/Yoevita-Emeliana.jpg" alt="Yoevita Emeliana" />
+                <p>Yoevita Emeliana</p>
+            </div>
+        </main>
+    </section>
+    <!-- Team -->
+
+
     <!-- Footer -->
     <!-- <footer>
         <p>&copy; 2024 Judul Website. All rights reserved.</p>
@@ -92,7 +209,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="./js/chart.js"></script>
     <!-- End Link Javascript -->
-
 </body>
 
 </html>
