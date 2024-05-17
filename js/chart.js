@@ -127,7 +127,7 @@ async function datas() {
                 break;
             default:
                 color = "rgba(0, 0, 0, 0.6)"; // Default hitam
-            }
+        }
 
         return {
             label: location,
@@ -135,7 +135,7 @@ async function datas() {
             borderColor: color,
             borderWidth: 2,
             data: aovMonthlyTotals[location].map((total, month) => {
-                return aovMonthlyCounts[location][month] > 0 ? (total / aovMonthlyCounts[location][month]).toFixed(2) : 0;
+                return (total / aovMonthlyCounts[location][month]).toFixed(2);
             }),
             fill: false,
             pointRadius: 5,
@@ -211,10 +211,10 @@ async function datas() {
         },
         options: {
             responsive: true,
-            indexAxis: 'y', 
+            indexAxis: 'y',
             scales: {
                 x: {
-                    stacked: true, 
+                    stacked: true,
                     beginAtZero: true,
                     title: {
                         display: true,
@@ -254,7 +254,7 @@ async function datas() {
         },
         options: {
             responsive: true,
-            indexAxis: 'y', 
+            indexAxis: 'y',
             scales: {
                 x: {
                     stacked: true,
@@ -330,48 +330,48 @@ async function datas() {
             }
         }
     });
-        // Buat line chart untuk total pendapatan bulanan
-        new Chart("revenueChart", {
-            type: "line",
-            data: {
-                labels: months,
-                datasets: [revenueDataset]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Transaction Date (Month)'
-                        },
-                        grid: {
-                            color: 'white'
-                        },
-                    },
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            precision: 0
-                        },
-                        title: {
-                            display: true,
-                            text: 'Line Total'
-                        },
-                        grid: {
-                            color: 'white'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
+    // Buat line chart untuk total pendapatan bulanan
+    new Chart("revenueChart", {
+        type: "line",
+        data: {
+            labels: months,
+            datasets: [revenueDataset]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
                         display: true,
-                        position: 'top'
+                        text: 'Transaction Date (Month)'
+                    },
+                    grid: {
+                        color: 'white'
+                    },
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    },
+                    title: {
+                        display: true,
+                        text: 'Line Total'
+                    },
+                    grid: {
+                        color: 'white'
                     }
                 }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
+                }
             }
-        });
-    
+        }
+    });
+
 }
 
