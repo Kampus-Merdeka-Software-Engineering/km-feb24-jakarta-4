@@ -31,7 +31,7 @@ async function datas() {
         });
     });
 
-    // Inisialisasi AOV (Average Order Value) bulanan untuk setiap lokasi
+    // Inisialisasi AOV bulanan untuk setiap lokasi
     let aovMonthlyTotals = {};
     let aovMonthlyCounts = {};
     locations.forEach(location => {
@@ -42,6 +42,9 @@ async function datas() {
     // Inisialisasi total pendapatan bulanan
     let monthlyRevenues = new Array(12).fill(0);
 
+    // Inisialisasi payment
+    let payment = {"Cash": 0,"Credit": 0};
+
     // Proses data
     data.forEach(entry => {
         let date = new Date(entry.TransDate);
@@ -50,6 +53,7 @@ async function datas() {
         let total = parseFloat(entry.TransTotal);
         let category = entry.Category;
         let product = entry.Product;
+        let paymentStatus = entry.Type;
 
         monthlyRevenues[month] += total;
 
@@ -63,6 +67,11 @@ async function datas() {
             categoryTotals[location][category] += total;
             variationCounts[location][category].add(product);
         }
+
+        if (paymentStatus == "Cash" || paymentStatus == "Credit" ){
+            payment[paymentStatus]++;
+        }
+
     });
 
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -127,7 +136,7 @@ async function datas() {
                 break;
             default:
                 color = "rgba(0, 0, 0, 0.6)"; // Default hitam
-        }
+            }
 
         return {
             label: location,
@@ -135,7 +144,7 @@ async function datas() {
             borderColor: color,
             borderWidth: 2,
             data: aovMonthlyTotals[location].map((total, month) => {
-                return (total / aovMonthlyCounts[location][month]).toFixed(2);
+                return aovMonthlyCounts[location][month] > 0 ? (total / aovMonthlyCounts[location][month]).toFixed(2) : 0;
             }),
             fill: false,
             pointRadius: 5,
@@ -159,6 +168,14 @@ async function datas() {
         pointBorderColor: '#fff'
     };
 
+    // Siapkan dataset untuk pie chart payment
+    var paymentLabels = Object.keys(payment);
+    var paymentData = paymentLabels.map(label => payment[label]);
+    // Data label untuk pie chart
+    // var paymentLabels = ["Pembayaran Lunas", "Pembayaran Tertunda"];
+    // // Data nilai untuk pie chart
+    // var paymentData = [75, 25]; // Contoh data, ubah sesuai kebutuhan
+    
     // Buat grafik total penjualan bulanan
     new Chart("myChart", {
         type: "bar",
@@ -211,10 +228,10 @@ async function datas() {
         },
         options: {
             responsive: true,
-            indexAxis: 'y',
+            indexAxis: 'y', 
             scales: {
                 x: {
-                    stacked: true,
+                    stacked: true, 
                     beginAtZero: true,
                     title: {
                         display: true,
@@ -254,7 +271,7 @@ async function datas() {
         },
         options: {
             responsive: true,
-            indexAxis: 'y',
+            indexAxis: 'y', 
             scales: {
                 x: {
                     stacked: true,
@@ -330,48 +347,69 @@ async function datas() {
             }
         }
     });
-    // Buat line chart untuk total pendapatan bulanan
-    new Chart("revenueChart", {
-        type: "line",
-        data: {
-            labels: months,
-            datasets: [revenueDataset]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                x: {
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Transaction Date (Month)'
+        // Buat line chart untuk total pendapatan bulanan
+        new Chart("revenueChart", {
+            type: "line",
+            data: {
+                labels: months,
+                datasets: [revenueDataset]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Transaction Date (Month)'
+                        },
+                        grid: {
+                            color: 'white'
+                        },
                     },
-                    grid: {
-                        color: 'white'
-                    },
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        },
+                        title: {
+                            display: true,
+                            text: 'Line Total'
+                        },
+                        grid: {
+                            color: 'white'
+                        }
+                    }
                 },
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        precision: 0
-                    },
-                    title: {
+                plugins: {
+                    legend: {
                         display: true,
-                        text: 'Line Total'
-                    },
-                    grid: {
-                        color: 'white'
+                        position: 'top'
                     }
                 }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top'
-                }
             }
-        }
+        });
+
+        //Buat pie chart
+        new Chart("paymentChart", {
+            type:"pie",
+            data : {
+                labels: paymentLabels,
+                datasets: [{
+                    backgroundColor: ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)"],
+                    data: paymentData
+                }]
+            },
+            options: {
+                responsive: true,
+                title: {
+                    display: true,
+                    text: "Payment Status"
+                    }
+                }
     });
 
 }
+
+
 

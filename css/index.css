@@ -88,7 +88,6 @@ nav ul li a:hover {
     cursor: pointer;
 }
 
-
 .menu-toggle div {
     display: block;
     width: 28px;
@@ -98,54 +97,6 @@ nav ul li a:hover {
     margin: 5px 0;
     transition: all 0.5s ease-in-out;
 }
-
-/* Insight */
-.list_kanan {
-    background-color: rgb(0, 0, 0);
-    margin-right: 30px;
-    display: flex;
-    color: black;
-    margin-top: 10px;
-}
-
-.no {
-    width: 70px;
-    text-align: center;
-    background-color: white;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    font-size: 25px;
-    font-weight: bold;
-}
-
-.text_list {
-    background-color: white;
-    margin-left: 10px;
-    width: 100%;
-    padding-top: 13px;
-    padding-bottom: 13px;
-    padding-left: 10px;
-}
-
-/* Team */
-.photo-item img {
-    height: 150px;
-    width: 150px;
-    border-radius: 20px;
-}
-
-.photo-item {
-    margin-left: 50px;
-    width: 15%;
-    text-align: center;
-    margin-bottom: 50px;
-    display: inline-block;
-}
-
-.photo-item p {
-    font-size: 10px;
-}
-
 
 /* Laptop */
 @media (max-width: 1480px) {
@@ -165,7 +116,7 @@ nav ul li a:hover {
 /* Tablet */
 @media (max-width: 768px) {
     html {
-        font-size: 67%;
+        font-size: 75.5%;
     }
 
     .logo-responsif {
@@ -257,5 +208,67 @@ nav ul li a:hover {
         z-index: 999;
         display: none;
     }
-
 }
+
+/* Insight */
+.list_kanan {
+    background-color: rgb(0, 0, 0);
+    margin-right: 30px;
+    display: flex;
+    color: black;
+    margin-top: 10px;
+}
+
+.no {
+    width: 70px;
+    text-align: center;
+    background-color: white;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.text_list {
+    background-color: white;
+    margin-left: 10px;
+    width: 100%;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 10px;
+}
+
+/* Team */
+.photo-item img {
+    height: 150px;
+    width: 150px;
+    border-radius: 20px;
+    }
+.photo-item {
+    margin-left: 50px;
+    width: 15%;
+    text-align: center;
+    margin-bottom: 50px;
+    display: inline-block;
+    margin-top: 100px;
+    }
+.photo-item p {
+    font-size: 10px;
+    }
+
+/*Table*/
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+.th {
+    background-color: #f2f2f2;
+    text-align: left;
+  }
+
+
