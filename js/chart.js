@@ -43,7 +43,7 @@ async function datas() {
     let monthlyRevenues = new Array(12).fill(0);
 
     // Inisialisasi payment
-    let payment = {"Cash": 0,"Credit": 0};
+    let payment = { "Cash": 0, "Credit": 0 };
 
     // Proses data
     data.forEach(entry => {
@@ -68,7 +68,7 @@ async function datas() {
             variationCounts[location][category].add(product);
         }
 
-        if (paymentStatus == "Cash" || paymentStatus == "Credit" ){
+        if (paymentStatus == "Cash" || paymentStatus == "Credit") {
             payment[paymentStatus]++;
         }
 
@@ -136,7 +136,7 @@ async function datas() {
                 break;
             default:
                 color = "rgba(0, 0, 0, 0.6)"; // Default hitam
-            }
+        }
 
         return {
             label: location,
@@ -144,7 +144,7 @@ async function datas() {
             borderColor: color,
             borderWidth: 2,
             data: aovMonthlyTotals[location].map((total, month) => {
-                return aovMonthlyCounts[location][month] > 0 ? (total / aovMonthlyCounts[location][month]).toFixed(2) : 0;
+                return (total / aovMonthlyCounts[location][month]).toFixed(2);
             }),
             fill: false,
             pointRadius: 5,
@@ -175,7 +175,23 @@ async function datas() {
     // var paymentLabels = ["Pembayaran Lunas", "Pembayaran Tertunda"];
     // // Data nilai untuk pie chart
     // var paymentData = [75, 25]; // Contoh data, ubah sesuai kebutuhan
-    
+
+
+    const legendMargin = {
+        id: 'legendMargin',
+        beforeInit(chart, legend, options) {
+            console.log(chart.legend.fit)
+            const fitvalue = chart.legend.fit;
+
+            chart.legend.fit = function fit() {
+                fitvalue.bind(chart.legend)();
+                return this.height += 15;
+            }
+        }
+    };
+
+
+
     // Buat grafik total penjualan bulanan
     new Chart("myChart", {
         type: "bar",
@@ -184,9 +200,11 @@ async function datas() {
             datasets: monthlyDatasets
         },
         options: {
+            maintainAspectRatio: false,
             responsive: true,
             scales: {
                 x: {
+                 
                     beginAtZero: true,
                     title: {
                         display: true,
@@ -195,6 +213,12 @@ async function datas() {
                     // grid: {
                     //     color: 'white'
                     // }
+                    // min: '2022-01-01',
+                    // max: '2022-12-31',
+                    // type: 'time',
+                    // time: {
+                    //     unit: 'day'
+                    // },
                 },
                 y: {
                     beginAtZero: true,
@@ -216,51 +240,10 @@ async function datas() {
                     position: 'top'
                 }
             }
-        }
+        },
+        plugins: [legendMargin]
     });
 
-    // Buat grafik total penjualan per kategori
-    new Chart("categoryChart", {
-        type: "bar",
-        data: {
-            labels: locations,
-            datasets: categoryDatasets
-        },
-        options: {
-            responsive: true,
-            indexAxis: 'y', 
-            scales: {
-                x: {
-                    stacked: true, 
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Transaction'
-                    },
-                    grid: {
-                        color: 'white'
-                    }
-                },
-                y: {
-                    stacked: true,
-                    beginAtZero: true,
-                    title: {
-                        display: true,
-                        text: 'Location'
-                    },
-                    ticks: {
-                        precision: 0
-                    },
-                }
-            },
-            plugins: {
-                legend: {
-                    display: true,
-                    position: 'top'
-                }
-            }
-        }
-    });
 
     // Buat grafik variasi produk per kategori
     new Chart("variationChart", {
@@ -270,8 +253,9 @@ async function datas() {
             datasets: variationDatasets
         },
         options: {
+            maintainAspectRatio: false,
             responsive: true,
-            indexAxis: 'y', 
+            indexAxis: 'y',
             scales: {
                 x: {
                     stacked: true,
@@ -302,7 +286,8 @@ async function datas() {
                     position: 'top'
                 }
             }
-        }
+        },
+        plugins: [legendMargin]
     });
 
     // Buat grafik tren AOV
@@ -313,6 +298,7 @@ async function datas() {
             datasets: aovDatasets
         },
         options: {
+            maintainAspectRatio: false,
             responsive: true,
             scales: {
                 x: {
@@ -345,68 +331,74 @@ async function datas() {
                     position: 'top'
                 }
             }
-        }
+        },
+        plugins: [legendMargin]
     });
-        // Buat line chart untuk total pendapatan bulanan
-        new Chart("revenueChart", {
-            type: "line",
-            data: {
-                labels: months,
-                datasets: [revenueDataset]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        title: {
-                            display: true,
-                            text: 'Transaction Date (Month)'
-                        },
-                        grid: {
-                            color: 'white'
-                        },
-                    },
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            precision: 0
-                        },
-                        title: {
-                            display: true,
-                            text: 'Line Total'
-                        },
-                        grid: {
-                            color: 'white'
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
+
+    // Buat line chart untuk total pendapatan bulanan
+    new Chart("revenueChart", {
+        type: "line",
+        data: {
+            labels: months,
+            datasets: [revenueDataset]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    title: {
                         display: true,
-                        position: 'top'
+                        text: 'Transaction Date (Month)'
+                    },
+                    grid: {
+                        color: 'white'
+                    },
+                },
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        precision: 0
+                    },
+                    title: {
+                        display: true,
+                        text: 'Line Total'
+                    },
+                    grid: {
+                        color: 'white'
                     }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'top'
                 }
             }
-        });
+        },
+        plugins: [legendMargin]
+    });
 
-        //Buat pie chart
-        new Chart("paymentChart", {
-            type:"pie",
-            data : {
-                labels: paymentLabels,
-                datasets: [{
-                    backgroundColor: ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)"],
-                    data: paymentData
-                }]
-            },
-            options: {
-                responsive: true,
-                title: {
-                    display: true,
-                    text: "Payment Status"
-                    }
-                }
+    //Buat pie chart
+    new Chart("paymentChart", {
+        type: "pie",
+        data: {
+            labels: paymentLabels,
+            datasets: [{
+                backgroundColor: ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)"],
+                data: paymentData
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            title: {
+                display: true,
+                text: "Payment Status"
+            }
+        },
+        plugins: [legendMargin]
     });
 
 }

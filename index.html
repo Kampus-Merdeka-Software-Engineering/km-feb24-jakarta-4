@@ -5,9 +5,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inter:wght@100..900&display=swap" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inter:wght@100..900&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
+
+    <!-- Google Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="./css/index.css" />
@@ -15,151 +20,240 @@
     <!-- Penyimpanan Icon -->
     <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon" />
     <title>Vending Machine New Jersey</title>
-    <body>
-        <!-- Header Start -->
-        <header class="header">
-            <div class="logo">
-                <img src="assets/images/vending-machine.png" alt="logo" />
-                <div class="logo-text">
-                    <p>Hi! This is your stats</p>
-                    <h2>Dashboard Vending Machine</h2>
+
+<body>
+    <!-- Header Start -->
+    <header class="header">
+        <div class="logo">
+            <img src="assets/images/vending-machine.png" alt="logo" />
+            <div class="logo-text">
+                <p>Hi! This is your stats</p>
+                <h2>Dashboard Vending Machine</h2>
+            </div>
+        </div>
+
+
+        <!--Navbar Start -->
+        <nav class="nav">
+            <ul>
+                <li class="logo-responsif"><img src="assets/images/vending-machine.png" alt="Logo"></li>
+                <li>
+                    <a href="#dashboard">
+                        <span class="material-icons">dashboard</span>
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="#insight">
+                        <span class="material-symbols-outlined">query_stats</span>Insight
+                    </a>
+                </li>
+                <li>
+                    <a href="#team">
+                        <span class="material-symbols-outlined">groups</span>Team
+                    </a>
+                </li>
+                <li>
+                    <a href="#abouthUs">
+                        <span class="material-symbols-outlined">info</span>Abouth Us
+                    </a>
+                </li>
+                <li>
+                    <a href="#Feedback">
+                        <span class="material-symbols-outlined">comment</span>Feedback
+
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!--End Navbar -->
+        <div class="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+
+    <div class="blur-overlay"></div>
+    <!-- End Header Navbar  -->
+
+    <!-- Dashboard -->
+    <section class="dashboard" id="dashboard">
+        <main class="hero">
+            <!-- filter -->
+            <div class="filter">
+                <label for="start-date">Month:</label>
+                <input type="month" id="start-month" onchange="filterChart(this)">
+                <button onclick="reset()">Reset</button>
+
+                <label for="start-date">Date:</label>
+                <input type="date" id="start-date">
+                <label for="location">Location:</label>
+                <select id="location">
+                    <option value="all">All</option>
+                    <option value="Brunswick Sq Mall">Brunswick Sq Mall</option>
+                    <option value="Earle Asphalt">Earle Asphalt</option>
+                    <option value="GuttenPlans">GuttenPlans</option>
+                    <option value="EB Public Library">EB Public Library</option>
+                </select>
+                <button onclick="calculateMetrics()">Apply Filters</button>
+            </div>
+
+            <div class="Metrik">
+                <div>
+                    <h2>Revenue</h2>
+                    <div id="revenue"></div>
+                </div>
+                <br>
+                <div>
+                    <h2>Average Monthly Grow</h2>
+                    <div id="avg-monthly-growth"></div>
+                </div>
+                <div>
+                    <h2>Total Products Sold</h2>
+                    <div id="total-products-sold"></div>
+                </div>
+                <div>
+                    <h2>Total Customers</h2>
+                    <div id="total-customers"></div>
                 </div>
             </div>
 
-            <!--Navbar Start -->
-            <nav class="nav">
-                <ul>
-                    <li><a href="#dashboard">Dashboard</a></li>
-                    <li><a href="#insight">Insight</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="#abouthUs">Abouth Us</a></li>
-                    <li><a href="#Feedback">Feedback</a></li>
-                </ul>
-            </nav>
-            <!--End Navbar -->
-        </header>
+            <!--Chart  -->
 
-        <div class="blur-overlay"></div>
-        <!-- End Header Navbar  -->
-
-        <!-- Dashboard -->
-        <section>
-            <div>
-                <h2>TREND AOV</h2>
-                <div style="width: 500px; height: 300px;">
-                    <canvas id="aovChart"></canvas>
-                </div>
-            </div>
-            <div>
-                <h2>TOTAL REVENUE PER MONTH</h2>
-                <div style="width: 500px; height: 300px;">
-                    <canvas id="revenueChart"></canvas>
-                </div>
-            </div>
-            <div>
-                <h2>PRODUCTS VARIATIONS</h2>
-                <div style="width: 500px; height: 300px;">
-                    <canvas id="variationChart"></canvas>
-                </div>
-            </div>
-            <div>
-                <h2>PRODUCT SALES BY CATEGORY</h2>
-                <div style="width: 500px; height: 300px;">
-                    <canvas id="categoryChart"></canvas>
-                </div>
-            </div>
-            <div>
-                <h2>MONTHLY SALES BASED ON LOCATION</h2>
-                <div style="width: 600px; height: 300px;">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </div>
-            <div>
-                <h2>Status Payment</h2>
-                <div style="width: 400px; height: 400px;">
-                    <canvas id="paymentChart"></canvas>
-                </div>
-            </div>
-            <h2> Top Selling Product</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Location</th>
-                        <th>Name of Product</th>
-                        <th>Category</th>
-                        <th>Quantity</th>
-                        <th>Total Sales</th>
-                    </tr>
-                </thead>
-                <tbody id="data-output">
-
-                </tbody>
-            </table>
-        </section>
-        <!-- End Dashboard -->
-        <!--Insight-->
-        <section class="insight" id="insight">
-            <main class="content" style="display: flex; justify-content: space-between;">
-                <div id="kiri" style=" width: 40%;">
-                    <h1 id="judul" style=" position: relative; top: 100px; margin-left: 50px; font-size: 40px;">PROPOSED <span style="background-color: rgb(193, 43, 193); padding: 5px 20px; display: inline-block; margin-left: 10px;">SOLUTION</span></h1>
-                    <div id="paragraph" style="margin-left: 50px;">
-                        <h1 style="margin-top: 200px; background-color: rgb(193, 43, 193); width: 60%; padding: 5px 50px 5px 5px;">HIGHLIGHT !!</h1>
-                        <p style="margin-top: 10px; text-align: justify;">HIGHLIGHT!! Based on the vending machine sales data, our team found a problem, namely a significant decrease in revenue from July to December. The decline was up to 9.10% from the previous increase during January to July which
-                            is 17.95%.</p>
+            <div class="flexbox">
+                <div class="chart-container">
+                    <h2>MONTHLY SALES BASED ON LOCATION</h2>
+                    <div class="chart-box">
+                        <canvas id="myChart"></canvas>
                     </div>
                 </div>
-                <div id="kanan" style="position: relative; top: 100px; width: 50%;">
-                    <div id="list_container">
-                        <div class="list_kanan">
-                            <span class="no">1</span>
-                            <span class="text_list">Adding the number of products that are most in demand at each vending machine location.</span>
-                        </div>
-                        <div class="list_kanan">
-                            <span class="no">2</span>
-                            <span class="text_list">Adjust the sales strategy to the months that have high performance to increase revenue.</span>
-                        </div>
-                        <div class="list_kanan">
-                            <span class="no">3</span>
-                            <span class="text_list">Adjust product variations and prices to customer preferences in each location to increase purchases.</span>
-                        </div>
-                        <div class="list_kanan">
-                            <span class="no">4</span>
-                            <span class="text_list">Monitor AOV and monthly sales trends regularly to adjust effective sales strategies.</span>
-                        </div>
-                        <div class="list_kanan">
-                            <span class="no">5</span>
-                            <span class="text_list">Conduct special promotions on certain product categories to encourage customers to make more purchases.</span>
-                        </div>
+
+                <div class="chart-container">
+                    <h2>TREND AOV</h2>
+                    <div class="chart-aov">
+                        <canvas id="aovChart"></canvas>
                     </div>
                 </div>
-            </main>
-        </section>
-        <!-- End Insight -->
-        <!-- Team -->
-        <section class="team" id="team">
-            <main class="content">
-                <div id="teamjudul" style=" width: 32%; float: left; margin-right: 50px; margin-left: 30px;">
-                    <h1 id="judul" style="position: relative; top: 100px; margin-left: 25px; font-size: 40px;">Meet Our </h1> <br>
-                    <h2 style="background-color: rgb(193, 43, 193);display:inline-block; position: relative; top: 100px; margin-left: 25px; font-size: 40px;">Team</h2>
+                <div class="chart-container">
+                    <h2>PRODUCTS VARIATIONS</h2>
+                    <div class="chartbox2">
+                        <canvas id="variationChart"></canvas>
+                    </div>
                 </div>
-                <div class="photo-item">
-                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="Indira Dwi Rahma" />
-                    <p>Afni Koerun Nisa</p>
+
+                <div class="pay-container">
+                    <h2>STATUS PAYMENT</h2>
+                    <div class="chartpay" style="width: 40%; ">
+                        <canvas id="paymentChart"></canvas>
+                    </div>
                 </div>
-                <div class="photo-item">
-                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="M. Arfin Aryasatya" />
-                    <p>Arkan Ikhwan Hiraqi</p>
+
+
+                <div class="table-container">
+                    <h2>TOP SELLING PRODUCT</h2>
+                    <label for="locationFilter">Filter by Location:</label>
+                    <select id="locationFilter">
+                        <option value="All"></option>
+                    </select>
+                    <table id="table" class="display" style="width: 100%; ">
+                        <thead>
+                            <tr>
+                                <th>Location</th>
+                                <th>Name of Product</th>
+                                <th>Category</th>
+                                <th>Quantity</th>
+                                <th>Revenue</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
-                <div class="photo-item">
-                    <img src="assets/images/Dennis-Irwan-Aurelio.jpg" alt="Rama Yanti" />
-                    <p>Dennis Irwan Aurelio</p>
+
+
+
+
+            </div>
+
+            </div>
+        </main>
+    </section>
+
+    <!-- End Dashboard -->
+    <!--Insight-->
+    <section class="insight" id="insight">
+        <main class="content">
+            <div id="kiri">
+                <h1 id="judul">PROPOSED
+                    <span>SOLUTION</span>
+                </h1>
+                <div id="paragraph">
+                    <h1> HIGHLIGHT !!</h1>
+                    <p> Based on the vending machine sales
+                        data, our team found a problem, namely a significant decrease in revenue from July to December.
+                        The decline was up to 9.10% from the previous increase during January to July which
+                        is 17.95%.</p>
                 </div>
-                <div class="photo-item">
-                    <img src="assets/images/Indira-Dwi-Rahma.jpg" alt="Rizqi Mahendra Pratama" />
-                    <p>Indira Dwi Rahma</p>
+            </div>
+
+
+            <div id="kanan">
+                <div id="list_container">
+                    <div class="list_kanan">
+                        <span class="no">1</span>
+                        <span class="text_list">Adding the number of products that are most in demand at each vending
+                            machine location.</span>
+                    </div>
+                    <div class="list_kanan">
+                        <span class="no">2</span>
+                        <span class="text_list">Adjust the sales strategy to the months that have high performance to
+                            increase revenue.</span>
+                    </div>
+                    <div class="list_kanan">
+                        <span class="no">3</span>
+                        <span class="text_list">Adjust product variations and prices to customer preferences in each
+                            location to increase purchases.</span>
+                    </div>
+                    <div class="list_kanan">
+                        <span class="no">4</span>
+                        <span class="text_list">Monitor AOV and monthly sales trends regularly to adjust effective sales
+                            strategies.</span>
+                    </div>
+                    <div class="list_kanan">
+                        <span class="no">5</span>
+                        <span class="text_list">Conduct special promotions on certain product categories to encourage
+                            customers to make more purchases.</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+    <!-- End Insight -->
+    <!-- Team -->
+    <section class="team" id="team">
+        <main class="content">
+            <div class="row">
+                <div id="teamjudul">
+                    <h1>Meet Our </h1>
+                    <h2>Team</h2>
                 </div>
                 <div class="photo-item">
                     <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="Afni Koerun Nisa" />
+                    <p>Afni Koerun Nisa</p>
+                </div>
+                <div class="photo-item">
+                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="Arkan Ikhwan Hiraqi" />
+                    <p>Arkan Ikhwan Hiraqi</p>
+                </div>
+                <div class="photo-item">
+                    <img src="assets/images/Dennis-Irwan-Aurelio.jpg" alt="Dennis-Irwan-Aurelio" />
+                    <p>Dennis Irwan Aurelio</p>
+                </div>
+                <div class="photo-item">
+                    <img src="assets/images/Indira-Dwi-Rahma.jpg" alt="Indira-Dwi-Rahma" />
+                    <p>Indira Dwi Rahma</p>
+                </div>
+                <div class="photo-item">
+                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="M. Arfin Aryasatya" />
                     <p>M. Arfin Aryasatya</p>
                 </div>
                 <div class="photo-item">
@@ -167,50 +261,62 @@
                     <p>Muhammad Aslam Daffa</p>
                 </div>
                 <div class="photo-item">
-                    <img src="assets/images/Nur-Azizah-Amra.jpg" alt="Wahyuniar" />
+                    <img src="assets/images/Nur-Azizah-Amra.jpg" alt="Nur-Azizah-Amra" />
                     <p> Nur Azizah Amra </p>
                 </div>
                 <div class="photo-item">
-                    <img src="assets/images/Putra-Pranata-Mauliate-Pakpahan.jpg" alt="Arkan Ikhwan Hiraqi" />
+                    <img src="assets/images/Putra-Pranata-Mauliate-Pakpahan.jpg"
+                        alt="Putra-Pranata-Mauliate-Pakpahan" />
                     <p>Putra Pranata Mauliate P.</p>
                 </div>
                 <div class="photo-item">
-                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="Nur Azizah Amra" />
+                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="ramma-yanti" />
                     <p>Rama Yanti</p>
                 </div>
                 <div class="photo-item">
-                    <img src="assets/images/Rizqi-Mahendra-Pratama.jpg" alt="Yesy Margharetta Munthe" />
+                    <img src="assets/images/Rizqi-Mahendra-Pratama.jpg" alt="Rizqi-Mahendra-Pratama" />
                     <p>Rizqi Mahendra Pratama</p>
                 </div>
                 <div class="photo-item">
-                    <img src="assets/images/Wahyuniar.jpeg" alt="Dennis Irwan Aurelio" />
+                    <img src="assets/images/Wahyuniar.jpeg" alt="Wahyuniar" />
                     <p>Wahyuniar</p>
                 </div>
                 <div class="photo-item">
-                    <img src="assets/images/Yesy-Margharetta-Munthe.jpg" alt="Putra Pranata Mauliate P." />
-                    <p>Yesy Margharetta Munthe</p>
+                    <img src="assets/images/Yesy-Margharetta-Munthe.jpg" alt="Yesy Margharetta Munthe" />
+                    <p> Yesy Margharetta Munthe</p>
                 </div>
                 <div class="photo-item">
                     <img src="assets/images/Yoevita-Emeliana.jpg" alt="Yoevita Emeliana" />
                     <p>Yoevita Emeliana</p>
                 </div>
-            </main>
-        </section> 
-        <!-- Team -->
+            </div>
+        </main>
+    </section>
+    <!-- Team -->
 
 
-        <!-- Footer -->
-        <!-- <footer>
+    <!-- Footer -->
+    <!-- <footer>
         <p>&copy; 2024 Judul Website. All rights reserved.</p>
     </footer> -->
-        <!--End Footer -->
+    <!--End Footer -->
 
-        <!-- My Javascript -->
-        <script src="./js/script.js"></script>
-        <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js" integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script type="module" src="./js/chart.js"></script>
-        <script type="module" src="./js/table.js"></script>
-        <!-- End Link Javascript -->
-    </body>
+    <!-- My Javascript -->
+    <script src="./js/script.js"></script>
+    <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"
+        integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="module" src="./js/chart.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script src="./js/table.js"></script>
+    <script src="./js/filter.js"></script>
+
+
+    <!-- End Link Javascript -->
+</body>
 
 </html>
