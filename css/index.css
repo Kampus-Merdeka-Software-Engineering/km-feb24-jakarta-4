@@ -86,7 +86,7 @@ nav ul li a:hover {
 }
 
 .nav span {
-    margin: 0 0.5rem;
+    margin-right: 0.2rem;
     float: left;
 }
 
@@ -388,7 +388,11 @@ table th {
 /* Laptop */
 @media (max-width: 1480px) {
     html {
-        font-size: 80%;
+        font-size: 12px;
+    }
+
+    .header {
+        font-size: 68%;
     }
 
     .logo-responsif {
@@ -404,8 +408,8 @@ table th {
 
 /* Tablet */
 @media (max-width: 768px) {
-    html {
-        font-size: 88%;
+    .header {
+        font-size: 80%;
     }
 
     .logo-responsif {
@@ -441,29 +445,62 @@ table th {
 
     nav ul li {
         margin-right: 0;
-        margin: 3rem 0 2rem;
+        margin: 2rem 0 2rem;
     }
 
     nav ul li a {
         color: #fff;
     }
 
-    .chart-container,
+    .nav ul .logo-responsif {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .logo img {
+        display: none;
+    }
+
+    .menu-toggle.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-toggle.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    @keyframes slideFromRight {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+
+
+    /* .chart-container,
     .pay-container {
         flex: 1 1 46%;
         max-width: 46%;
-    }
+    } */
 
     canvas {
-        height: 200px;
+        height: 300px;
+
     }
 
 
     /* Mobile */
     @media (max-width: 576px) {
-        html {
+        /* html {
             font-size: 80%;
-        }
+        } */
 
         .menu-toggle {
             display: block;
@@ -545,7 +582,6 @@ table th {
         .table-container,
         .pay-container {
             flex: 1 1 100%;
-            /* Lebar penuh pada layar kecil */
             max-width: 100%;
         }
 

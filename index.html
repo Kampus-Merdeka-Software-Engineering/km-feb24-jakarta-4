@@ -76,14 +76,16 @@
 
     <div class="blur-overlay"></div>
     <!-- End Header Navbar  -->
-
+    <!-- <section class="'landing-Page" style="background: cover;width: 100%; justify-content: center;">
+        <img src="assets/images/Landing Page Background Remover (2).png" alt="">
+    </section> -->
     <!-- Dashboard -->
     <section class="dashboard" id="dashboard">
         <main class="hero">
             <!-- filter -->
             <div class="filter">
                 <label for="start-date">Month:</label>
-                <input type="month" id="start-month" onchange="filterChart(this)">
+                <input type="month" min="2022-01" max="2022-12" onchange="filterChart(this)">
                 <button onclick="reset()">Reset</button>
 
                 <label for="start-date">Date:</label>
@@ -135,6 +137,7 @@
                         <canvas id="aovChart"></canvas>
                     </div>
                 </div>
+
                 <div class="chart-container">
                     <h2>PRODUCTS VARIATIONS</h2>
                     <div class="chartbox2">
@@ -144,12 +147,10 @@
 
                 <div class="pay-container">
                     <h2>STATUS PAYMENT</h2>
-                    <div class="chartpay" style="width: 40%; ">
+                    <div class="chartpay" style="width: 46%; ">
                         <canvas id="paymentChart"></canvas>
                     </div>
                 </div>
-
-
                 <div class="table-container">
                     <h2>TOP SELLING PRODUCT</h2>
                     <label for="locationFilter">Filter by Location:</label>
@@ -168,9 +169,6 @@
                         </thead>
                     </table>
                 </div>
-
-
-
 
             </div>
 

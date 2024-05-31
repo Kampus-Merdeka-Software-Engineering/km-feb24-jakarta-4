@@ -204,7 +204,7 @@ async function datas() {
             responsive: true,
             scales: {
                 x: {
-                 
+
                     beginAtZero: true,
                     title: {
                         display: true,
