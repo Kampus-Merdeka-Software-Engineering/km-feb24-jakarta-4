@@ -1,3 +1,4 @@
+// Animasi Hamburger
 document.querySelector('.menu-toggle').addEventListener('click', function () {
     const nav = document.querySelector('.nav ul');
     const hamburger = document.querySelector('.menu-toggle');
@@ -18,4 +19,13 @@ document.addEventListener('click', function (event) {
     }
 });
 
+
+// 
+const selectBtn = document.querySelector(".select-btn");
+const items = document.querySelectorAll(".item");
+
+selectBtn.addEventListener("click", () => {
+    selectBtn.classList.toggle("open");
+
+});
 

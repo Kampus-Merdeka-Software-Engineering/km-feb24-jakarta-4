@@ -1,6 +1,3 @@
-//Import JSON
-datas();
-
 async function datas() {
     let response = await fetch('./vending_machine_sales.json');
     let data = await response.json();

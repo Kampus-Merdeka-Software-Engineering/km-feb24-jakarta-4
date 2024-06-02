@@ -84,21 +84,75 @@
         <main class="hero">
             <!-- filter -->
             <div class="filter">
-                <label for="start-date">Month:</label>
-                <input type="month" min="2022-01" max="2022-12" onchange="filterChart(this)">
-                <button onclick="reset()">Reset</button>
+                <div class="periode">
+                    <div class="select-btn">
+                        <span class="btn-text"> Periode Date</span>
+                        <span class="arrow-dwn">
+                            <span class="material-symbols-outlined"> arrow_drop_down</span>
+                        </span>
+                    </div>
+                    <ul class="list-items">
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(0)"
+                                checked="">Januari
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(1)"
+                                checked="">Februari</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(2)"
+                                checked="">Maret</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(3)"
+                                checked="">April</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(4)"
+                                checked="">Mei</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" id="selectallchekcbox" type="checkbox"
+                                onclick="selectedMonth(5)" checked="">Juni</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(6)"
+                                checked="">Juli</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(7)"
+                                checked="">Agustus</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(8)"
+                                checked="">September</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(9)"
+                                checked="">Oktober</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(10)"
+                                checked="">November</span>
+                        </li>
+                        <li class="item">
+                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(11)"
+                                checked="">Desember</span>
+                        </li>
+                    </ul>
+                </div>
 
-                <label for="start-date">Date:</label>
-                <input type="date" id="start-date">
-                <label for="location">Location:</label>
-                <select id="location">
-                    <option value="all">All</option>
-                    <option value="Brunswick Sq Mall">Brunswick Sq Mall</option>
-                    <option value="Earle Asphalt">Earle Asphalt</option>
-                    <option value="GuttenPlans">GuttenPlans</option>
-                    <option value="EB Public Library">EB Public Library</option>
-                </select>
-                <button onclick="calculateMetrics()">Apply Filters</button>
+                <div class="filterlocation">
+                    <label for="location">Location:</label>
+                    <select id="location">
+                        <option value="all">All</option>
+                        <option value="Brunswick Sq Mall">Brunswick Sq Mall</option>
+                        <option value="Earle Asphalt">Earle Asphalt</option>
+                        <option value="GuttenPlans">GuttenPlans</option>
+                        <option value="EB Public Library">EB Public Library</option>
+                    </select>
+                </div>
             </div>
 
             <div class="Metrik">
@@ -239,7 +293,7 @@
                     <p>Afni Koerun Nisa</p>
                 </div>
                 <div class="photo-item">
-                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="Arkan Ikhwan Hiraqi" />
+                    <img src="assets/images/Arkan-Ikhwan-Hiraqi.JPG" alt="Arkan Ikhwan Hiraqi" />
                     <p>Arkan Ikhwan Hiraqi</p>
                 </div>
                 <div class="photo-item">
@@ -304,7 +358,7 @@
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"
         integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script type="module" src="./js/chart.js"></script>
+    <script type="module" src="./js/index.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
