@@ -12,26 +12,12 @@ document.addEventListener('DOMContentLoaded', function () {
     //Pendeklarasian inisialisasi array periode date
     let monthsFilter = [true, true, true, true, true, true, true, true, true, true, true, true]
 
-    // // Warna untuk chart
-    // const chartColors = {
-    //     red: "rgba(255, 0, 0, 0.6)",
-    //     yellow: "rgba(255, 255, 0, 0.6)",
-    //     blue: "rgba(0, 0, 255, 0.6)",
-    //     green: "rgba(0, 128, 0, 0.6)",
-    //     redBorder: "rgba(255, 0, 0, 1)",
-    //     yellowBorder: "rgba(255, 255, 0, 1)",
-    //     blueBorder: "rgba(0, 0, 255, 1)",
-    //     greenBorder: "rgba(0, 128, 0, 1)"
-    // };
-
     //Filterisasi Periode date
-    function selectedMonth(idx) {
+    async function selectedMonth(idx) {
         // Toggle the selected month filter
         monthsFilter[idx] = !monthsFilter[idx]
-        fetch('./vending_machine_sales.json').then(response => response.json()).then(data =>
-            updateChart(data)
-        )
-
+        let data = await fetchData()
+        updateChart(data)
     }
 
     let els = document.getElementsByClassName('monthsFilter')
@@ -41,12 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     }
 
-    //
+    async function main() {
+        let data = await fetchData()
+        updateChartAndTable(data);
+    }
 
     async function fetchData() {
         let response = await fetch('./vending_machine_sales.json');
         data = await response.json();
-        updateChartAndTable(data);
+        return data
     }
 
     function updateChartAndTable(data) {
@@ -479,7 +468,7 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(document.getElementById('location').value);
     });
 
-    fetchData();
+    main();
 });
 
 // list function tambahan

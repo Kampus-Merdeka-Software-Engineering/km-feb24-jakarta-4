@@ -1,6 +1,6 @@
 // Animasi Hamburger
 document.querySelector('.menu-toggle').addEventListener('click', function () {
-    const nav = document.querySelector('.nav ul');
+    const nav = document.querySelector('.navbar ul');
     const hamburger = document.querySelector('.menu-toggle');
     hamburger.classList.toggle('active');
     nav.classList.toggle('active');
@@ -9,7 +9,7 @@ document.querySelector('.menu-toggle').addEventListener('click', function () {
 
 // Nampilin Hamburger dan Pengaturan klik
 document.addEventListener('click', function (event) {
-    const nav = document.querySelector('.nav ul');
+    const nav = document.querySelector('.navbar ul');
     const hamburger = document.querySelector('.menu-toggle');
     const isClickInsideNav = nav.contains(event.target);
 
@@ -20,7 +20,7 @@ document.addEventListener('click', function (event) {
 });
 
 
-// 
+// filter periode klik
 const selectBtn = document.querySelector(".select-btn");
 const items = document.querySelectorAll(".item");
 

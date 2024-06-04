@@ -20,68 +20,69 @@
     <!-- Penyimpanan Icon -->
     <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon" />
     <title>Vending Machine New Jersey</title>
+</head>
 
 <body>
-    <!-- Header Start -->
-    <header class="header">
-        <div class="logo">
-            <img src="assets/images/vending-machine.png" alt="logo" />
-            <div class="logo-text">
-                <p>Hi! This is your stats</p>
-                <h2>Dashboard Vending Machine</h2>
+    <main>
+        <!-- Header Start -->
+        <header class="header">
+            <div class="logo">
+                <img src="assets/images/vending-machine.png" alt="logo" />
+                <div class="logo-text">
+                    <p>Hi! This is your stats</p>
+                    <h2>Dashboard Vending Machine</h2>
+                </div>
             </div>
-        </div>
 
+            <!--Navbar Start -->
+            <nav class="navbar">
+                <ul>
+                    <li class="logo-responsif"><img src="assets/images/vending-machine.png" alt="Logo"></li>
+                    <li>
+                        <a href="#dashboard">
+                            <span class="material-icons">dashboard</span>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#insight">
+                            <span class="material-symbols-outlined">query_stats</span>Insight
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#team">
+                            <span class="material-symbols-outlined">groups</span>Team
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#Feedback">
+                            <span class="material-symbols-outlined">comment</span>Feedback
 
-        <!--Navbar Start -->
-        <nav class="nav">
-            <ul>
-                <li class="logo-responsif"><img src="assets/images/vending-machine.png" alt="Logo"></li>
-                <li>
-                    <a href="#dashboard">
-                        <span class="material-icons">dashboard</span>
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="#insight">
-                        <span class="material-symbols-outlined">query_stats</span>Insight
-                    </a>
-                </li>
-                <li>
-                    <a href="#team">
-                        <span class="material-symbols-outlined">groups</span>Team
-                    </a>
-                </li>
-                <li>
-                    <a href="#abouthUs">
-                        <span class="material-symbols-outlined">info</span>Abouth Us
-                    </a>
-                </li>
-                <li>
-                    <a href="#Feedback">
-                        <span class="material-symbols-outlined">comment</span>Feedback
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <!--End Navbar -->
 
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <!--End Navbar -->
-        <div class="menu-toggle">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </header>
+            <!--Menu Toggle -->
+            <div class="menu-toggle">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <!--End Menu Toggle -->
 
-    <div class="blur-overlay"></div>
-    <!-- End Header Navbar  -->
-    <!-- <section class="'landing-Page" style="background: cover;width: 100%; justify-content: center;">
-        <img src="assets/images/Landing Page Background Remover (2).png" alt="">
-    </section> -->
-    <!-- Dashboard -->
-    <section class="dashboard" id="dashboard">
-        <main class="hero">
+        </header>
+        <!-- End Header Navbar  -->
+
+        <!--Landing Page -->
+        <!-- <section class="'landing-Page" style="background: cover;width: 100%; justify-content: center;">
+            <img src="assets/images/Landing Page Background Remover (2).png" alt="">
+        </section> -->
+        <!--End Landing Page -->
+
+        <!-- Dashboard -->
+        <section class="dashboard" id="dashboard">
             <!-- filter -->
             <div class="filter">
                 <div class="periode">
@@ -207,9 +208,7 @@
                 </div>
                 <div class="table-container">
                     <h2>TOP SELLING PRODUCT</h2>
-                    <label for="locationFilter">Filter by Location:</label>
-                    <select id="locationFilter">
-                        <option value="All"></option>
+                    <option value="All"></option>
                     </select>
                     <table id="table" class="display" style="width: 100%; ">
                         <thead>
@@ -227,130 +226,136 @@
             </div>
 
             </div>
-        </main>
-    </section>
+        </section>
 
-    <!-- End Dashboard -->
-    <!--Insight-->
-    <section class="insight" id="insight">
-        <main class="content">
-            <div id="kiri">
-                <h1 id="judul">PROPOSED
-                    <span>SOLUTION</span>
-                </h1>
-                <div id="paragraph">
-                    <h1> HIGHLIGHT !!</h1>
-                    <p> Based on the vending machine sales
-                        data, our team found a problem, namely a significant decrease in revenue from July to December.
-                        The decline was up to 9.10% from the previous increase during January to July which
-                        is 17.95%.</p>
+        <!-- End Dashboard -->
+
+        <!--Insight-->
+        <section class="insight" id="insight">
+            <div class="content">
+                <div id="kiri">
+                    <h1 id="judul">PROPOSED
+                        <span>SOLUTION</span>
+                    </h1>
+                    <div id="paragraph">
+                        <h1> HIGHLIGHT !!</h1>
+                        <p> Based on the vending machine sales
+                            data, our team found a problem, namely a significant decrease in revenue from July to
+                            December.
+                            The decline was up to 9.10% from the previous increase during January to July which
+                            is 17.95%.</p>
+                    </div>
+                </div>
+
+
+                <div id="kanan">
+                    <div id="list_container">
+                        <div class="list_kanan">
+                            <span class="no">1</span>
+                            <span class="text_list">Adding the number of products that are most in demand at each
+                                vending
+                                machine location.</span>
+                        </div>
+                        <div class="list_kanan">
+                            <span class="no">2</span>
+                            <span class="text_list">Adjust the sales strategy to the months that have high performance
+                                to
+                                increase revenue.</span>
+                        </div>
+                        <div class="list_kanan">
+                            <span class="no">3</span>
+                            <span class="text_list">Adjust product variations and prices to customer preferences in each
+                                location to increase purchases.</span>
+                        </div>
+                        <div class="list_kanan">
+                            <span class="no">4</span>
+                            <span class="text_list">Monitor AOV and monthly sales trends regularly to adjust effective
+                                sales
+                                strategies.</span>
+                        </div>
+                        <div class="list_kanan">
+                            <span class="no">5</span>
+                            <span class="text_list">Conduct special promotions on certain product categories to
+                                encourage
+                                customers to make more purchases.</span>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
+        <!-- End Insight -->
 
-
-            <div id="kanan">
-                <div id="list_container">
-                    <div class="list_kanan">
-                        <span class="no">1</span>
-                        <span class="text_list">Adding the number of products that are most in demand at each vending
-                            machine location.</span>
+        <!-- Team -->
+        <section class="team" id="team">
+            <div class="content">
+                <div class="row">
+                    <div id="teamjudul">
+                        <h1>Meet Our </h1>
+                        <h2>Team</h2>
                     </div>
-                    <div class="list_kanan">
-                        <span class="no">2</span>
-                        <span class="text_list">Adjust the sales strategy to the months that have high performance to
-                            increase revenue.</span>
+                    <div class="photo-item">
+                        <img src="assets/images/Afni-Khoerun-Nisa.JPG" alt="Afni Koerun Nisa" />
+                        <p>Afni Koerun Nisa</p>
                     </div>
-                    <div class="list_kanan">
-                        <span class="no">3</span>
-                        <span class="text_list">Adjust product variations and prices to customer preferences in each
-                            location to increase purchases.</span>
+                    <div class="photo-item">
+                        <img src="assets/images/Arkan-Ikhwan-Hiraqi.JPG" alt="Arkan Ikhwan Hiraqi" />
+                        <p>Arkan Ikhwan Hiraqi</p>
                     </div>
-                    <div class="list_kanan">
-                        <span class="no">4</span>
-                        <span class="text_list">Monitor AOV and monthly sales trends regularly to adjust effective sales
-                            strategies.</span>
+                    <div class="photo-item">
+                        <img src="assets/images/Dennis-Irwan-Aurelio.jpg" alt="Dennis-Irwan-Aurelio" />
+                        <p>Dennis Irwan Aurelio</p>
                     </div>
-                    <div class="list_kanan">
-                        <span class="no">5</span>
-                        <span class="text_list">Conduct special promotions on certain product categories to encourage
-                            customers to make more purchases.</span>
+                    <div class="photo-item">
+                        <img src="assets/images/Indira-Dwi-Rahma.jpg" alt="Indira-Dwi-Rahma" />
+                        <p>Indira Dwi Rahma</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="M. Arfin Aryasatya" />
+                        <p>M. Arfin Aryasatya</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="assets/images/Muhammad-Aslam-Daffa.jpg" alt="Muhammad Aslam Daffa" />
+                        <p>Muhammad Aslam Daffa</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="assets/images/Nur-Azizah-Amra.jpg" alt="Nur-Azizah-Amra" />
+                        <p> Nur Azizah Amra </p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="assets/images/Putra-Pranata-Mauliate-Pakpahan.jpg"
+                            alt="Putra-Pranata-Mauliate-Pakpahan" />
+                        <p>Putra Pranata Mauliate P.</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="assets/images/Rama-Yanti.JPG" alt="ramma-yanti" />
+                        <p>Rama Yanti</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="assets/images/Rizqi-Mahendra-Pratama.jpg" alt="Rizqi-Mahendra-Pratama" />
+                        <p>Rizqi Mahendra Pratama</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="assets/images/Wahyuniar.jpeg" alt="Wahyuniar" />
+                        <p>Wahyuniar</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="assets/images/Yesy-Margharetta-Munthe.jpg" alt="Yesy Margharetta Munthe" />
+                        <p> Yesy Margharetta Munthe</p>
+                    </div>
+                    <div class="photo-item">
+                        <img src="assets/images/Yoevita-Emeliana.jpg" alt="Yoevita Emeliana" />
+                        <p>Yoevita Emeliana</p>
                     </div>
                 </div>
             </div>
-        </main>
-    </section>
-    <!-- End Insight -->
-    <!-- Team -->
-    <section class="team" id="team">
-        <main class="content">
-            <div class="row">
-                <div id="teamjudul">
-                    <h1>Meet Our </h1>
-                    <h2>Team</h2>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="Afni Koerun Nisa" />
-                    <p>Afni Koerun Nisa</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Arkan-Ikhwan-Hiraqi.JPG" alt="Arkan Ikhwan Hiraqi" />
-                    <p>Arkan Ikhwan Hiraqi</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Dennis-Irwan-Aurelio.jpg" alt="Dennis-Irwan-Aurelio" />
-                    <p>Dennis Irwan Aurelio</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Indira-Dwi-Rahma.jpg" alt="Indira-Dwi-Rahma" />
-                    <p>Indira Dwi Rahma</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="M. Arfin Aryasatya" />
-                    <p>M. Arfin Aryasatya</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Muhammad-Aslam-Daffa.jpg" alt="Muhammad Aslam Daffa" />
-                    <p>Muhammad Aslam Daffa</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Nur-Azizah-Amra.jpg" alt="Nur-Azizah-Amra" />
-                    <p> Nur Azizah Amra </p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Putra-Pranata-Mauliate-Pakpahan.jpg"
-                        alt="Putra-Pranata-Mauliate-Pakpahan" />
-                    <p>Putra Pranata Mauliate P.</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/M. Arfin-Aryasatya.JPG" alt="ramma-yanti" />
-                    <p>Rama Yanti</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Rizqi-Mahendra-Pratama.jpg" alt="Rizqi-Mahendra-Pratama" />
-                    <p>Rizqi Mahendra Pratama</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Wahyuniar.jpeg" alt="Wahyuniar" />
-                    <p>Wahyuniar</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Yesy-Margharetta-Munthe.jpg" alt="Yesy Margharetta Munthe" />
-                    <p> Yesy Margharetta Munthe</p>
-                </div>
-                <div class="photo-item">
-                    <img src="assets/images/Yoevita-Emeliana.jpg" alt="Yoevita Emeliana" />
-                    <p>Yoevita Emeliana</p>
-                </div>
-            </div>
-        </main>
-    </section>
-    <!-- Team -->
-
+        </section>
+        <!-- End Team -->
+    </main>
 
     <!-- Footer -->
-    <!-- <footer>
-        <p>&copy; 2024 Judul Website. All rights reserved.</p>
-    </footer> -->
+    <footer>
+        <p> © 2024 Vending Machine sales. BY Team 4 Jakarta </p>
+    </footer>
     <!--End Footer -->
 
     <!-- My Javascript -->
@@ -366,8 +371,6 @@
 
     <script src="./js/table.js"></script>
     <script src="./js/filter.js"></script>
-
-
     <!-- End Link Javascript -->
 </body>
 
