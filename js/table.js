@@ -1,16 +1,16 @@
-// Function to fetch data from JSON file
+// Fungsi untuk fetch data dari data JSON
 async function getData() {
   const response = await fetch('./vending_machine_sales.json');
   const data = await response.json();
   return data;
 }
 
-// Function to calculate total sales
+// Fungsi menghitung total sales 
 function calculateTotalSales(sales) {
   return parseFloat(sales.RPrice || 0) * parseInt(sales.RQty || 0, 10);
 }
 
-// Function to get top 5 products by location
+// Fungsi untuk mengambil 5 produk teratas berdasarkan lokasi
 function getTop5ProductsByLocation(salesData) {
   let topSalesByLocation = {};
 
@@ -45,7 +45,7 @@ function getTop5ProductsByLocation(salesData) {
   return top5SalesByLocation;
 }
 
-// Function to create the table
+// Fungsi untuk membuat tabel 
 async function createTable() {
   let data = await getData();
   let top5SalesByLocation = getTop5ProductsByLocation(data);
@@ -64,14 +64,14 @@ async function createTable() {
     });
   });
 
-  // Populate location filter
+  // filter untuk lokasi
   let locationFilter = $('#locationFilter');
-  locationFilter.append(new Option("All", "All")); // Add option to show all locations
+  locationFilter.append(new Option("All", "All")); 
   locations.forEach(location => {
     locationFilter.append(new Option(location, location));
   });
 
-  // Initialize DataTable
+  // Inisiasi DataTable
   let table = $('#table').DataTable({
     data: tableData,
     columns: [
@@ -81,8 +81,8 @@ async function createTable() {
       { title: "Quantity" },
       { title: "Total Sales" }
     ],
-    lengthMenu: [5, 10, 25, 50], // Pagination options
-    pageLength: 5 // Default pagination limit
+    lengthMenu: [5, 10, 25, 50], 
+    pageLength: 5 
   });
 
   // Filter functionality
@@ -96,7 +96,7 @@ async function createTable() {
   });
 }
 
-// Initialize the table on document ready
+// Inisiasi tabel pada dokumen
 $(document).ready(function () {
   createTable();
 });
