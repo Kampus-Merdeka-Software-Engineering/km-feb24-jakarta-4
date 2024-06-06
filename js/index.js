@@ -148,6 +148,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Hitung rata-rata peningkatan bulanan
         averageMonthlyGrowth = calculateAverage(calculateMonthlyGrowthRate(monthlyRevenues)) * 100;
+        console.log(monthlyRevenues);
+        console.log(calculateMonthlyGrowthRate(monthlyRevenues));
+        console.log(calculateAverage(calculateMonthlyGrowthRate(monthlyRevenues)) * 100);
         
 
         // Menampilkan scorecard
@@ -453,10 +456,11 @@ document.addEventListener('DOMContentLoaded', function () {
     function calculateMonthlyGrowthRate(monthlyRevenues) {
         let growthRates = [];
         for (let i = 1; i < monthlyRevenues.length; i++) {
-            let growthRate = (monthlyRevenues[i] - monthlyRevenues[i - 1]) / monthlyRevenues[i - 1];
+            let growthRate = (monthlyRevenues[i] === 0 || monthlyRevenues[i - 1] === 0) ? 0 :
+                (monthlyRevenues[i] - monthlyRevenues[i - 1]) / monthlyRevenues[i - 1];
             growthRates.push(growthRate);
         }
-        return growthRates;
+        return growthRates.filter(rate => rate !== 0);
     }
 
     function calculateAverage(arr) {
