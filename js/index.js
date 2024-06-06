@@ -35,33 +35,28 @@ document.addEventListener('DOMContentLoaded', function () {
     const locations = ["GuttenPlans", "EB Public Library", "Brunswick Sq Mall", "Earle Asphalt"];
     const categories = ["Food", "Carbonated", "Non Carbonated", "Water"];
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
+    async function fetchData() {
+        let response = await fetch('./vending_machine_sales.json');
+        data = await response.json();
+        updateDashboard(data);
+    }
 
     //Filterisasi Periode date
     function selectedMonth(idx) {
         // Toggle the selected month filter
         monthsFilter[idx] = !monthsFilter[idx]
-        fetch('./vending_machine_sales.json').then(response => response.json()).then(data =>
-            updateChart(data)
-        )
-
     }
 
     let els = document.getElementsByClassName('monthsFilter')
     for (let i = 0; i < els.length; i++) {
         els[i].addEventListener('click', () => {
-            selectedMonth(i)
+            updateDashboard(data, i)
         })
     }
 
-    //
-
-    async function fetchData() {
-        let response = await fetch('./vending_machine_sales.json');
-        data = await response.json();
-        updateChartAndTable(data);
-    }
-
-    function updateChartAndTable(data) {
+    function updateDashboard(data, idx) {
+        selectedMonth(idx);
         let filteredData = filterDataByLocation(data);
         updateChart(filteredData)
     }
@@ -478,7 +473,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('location').addEventListener('change', () => {
-        updateChartAndTable(data);
+        updateDashboard(data);
         console.log(document.getElementById('location').value);
     });
 
