@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //Pendeklarasian inisialisasi array periode date
     let monthsFilter = [true, true, true, true, true, true, true, true, true, true, true, true]
 
+
     //Pendeklarasian warna
     const colors = {
         red: "rgba(255, 0, 0, 0.6)",
@@ -28,36 +29,35 @@ document.addEventListener('DOMContentLoaded', function () {
         green: "rgba(0, 128, 0, 1)"
     };
 
+
     //Pendeklarasian inisialisasi lokasi, kategori dan bulan
     const locations = ["GuttenPlans", "EB Public Library", "Brunswick Sq Mall", "Earle Asphalt"];
     const categories = ["Food", "Carbonated", "Non Carbonated", "Water"];
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
+    async function fetchData() {
+        let response = await fetch('./vending_machine_sales.json');
+        data = await response.json();
+        updateDashboard(data);
+    }
 
     //Filterisasi Periode date
     function selectedMonth(idx) {
         // Toggle the selected month filter
         monthsFilter[idx] = !monthsFilter[idx]
-        fetch('./vending_machine_sales.json').then(response => response.json()).then(data =>
-            updateChartAndTable(data)
-        )
     }
 
     let els = document.getElementsByClassName('monthsFilter')
     for (let i = 0; i < els.length; i++) {
         els[i].addEventListener('click', () => {
-            selectedMonth(i)
+            updateDashboard(data, i)
         })
     }
 
-    async function fetchData() {
-        let response = await fetch('./vending_machine_sales.json');
-        data = await response.json();
-        updateChartAndTable(data);
-    }
-
-    function updateChartAndTable(data) {
+    function updateDashboard(data, idx) {
+        selectedMonth(idx);
         let filteredData = filterDataByLocation(data);
-        updateChart(filteredData);
+        updateChart(filteredData)
     }
 
     // Function to filter data by location
@@ -114,8 +114,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // Proses data
         data.forEach(entry => {
             let date = new Date(entry.TransDate);
-            let month = date.getMonth(); // 0 untuk Januari, 1 untuk Februari, dll.
-            if (!monthsFilter[month]) return; // Skip data if month is not selected
+            let month = date.getMonth(); 
+            if (!monthsFilter[month]) return;
 
             let location = entry.Location;
             let total = parseFloat(entry.LineTotal);
@@ -130,26 +130,28 @@ document.addEventListener('DOMContentLoaded', function () {
             totalCustomers += 1;
 
             if (locations.includes(location)) {
-                monthlyTotals[location][month] += total;
-                aovMonthlyTotals[location][month] += total;
-                aovMonthlyCounts[location][month]++;
+                monthlyTotals[location][month] += monthsFilter[month] ? total : null;
+                aovMonthlyTotals[location][month] += monthsFilter[month] ? total : 0;
+                monthsFilter[month] ? aovMonthlyCounts[location][month]++ : 0;
             }
 
             if (locations.includes(location) && categories.includes(category)) {
-                categoryTotals[location][category] += total;
-                variationCounts[location][category].add(product);
+                categoryTotals[location][category] += monthsFilter[month] ? total : 0;
+                monthsFilter[month] ? variationCounts[location][category].add(product) : null;
             }
 
             if (paymentStatus == "Cash" || paymentStatus == "Credit") {
-                payment[paymentStatus]++;
+                monthsFilter[month] ? payment[paymentStatus]++ : 0;
             }
+
         });
 
         // Hitung rata-rata peningkatan bulanan
         averageMonthlyGrowth = calculateAverage(calculateMonthlyGrowthRate(monthlyRevenues)) * 100;
+        
 
         // Menampilkan scorecard
-        document.getElementById('revenue').innerHTML = "$" + revenue.toFixed(2);
+        document.getElementById('revenue').innerHTML = "$" + revenue;
         document.getElementById('avg-monthly-growth').innerHTML = averageMonthlyGrowth.toFixed(2) + "%";
         document.getElementById('total-products-sold').innerHTML = totalProductsSold;
         document.getElementById('total-customers').innerHTML = totalCustomers;
@@ -226,13 +228,17 @@ document.addEventListener('DOMContentLoaded', function () {
         const legendMargin = {
             id: 'legendMargin',
             beforeInit(chart, legend, options) {
+                // console.log(chart.legend.fit)
                 const fitvalue = chart.legend.fit;
+
                 chart.legend.fit = function fit() {
                     fitvalue.bind(chart.legend)();
                     return this.height += 15;
                 }
             }
         };
+
+
 
         // Buat grafik total penjualan bulanan
         if (monthlyChart) monthlyChart.destroy();
@@ -246,51 +252,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 maintainAspectRatio: false,
                 responsive: true,
                 scales: {
+                    x: {
+
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'TransDate (Month)'
+                        }
+                    },
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            callback: function (value) {
-                                return value >= 1000 ? (value / 1000) + 'K' : value;
-                            }
+                            precision: 0
+                        },
+                        title: {
+                            display: true,
+                            text: 'Transaction'
+                        },
+                        grid: {
+                            color: 'white'
                         }
                     }
                 },
                 plugins: {
                     legend: {
+                        display: true,
                         position: 'top'
                     }
                 }
-            }
+            },
+            plugins: [legendMargin]
         });
 
-        // Buat grafik total penjualan per kategori
-        if (categoryChart) categoryChart.destroy();
-        categoryChart = new Chart("categoryChart", {
-            type: "bar",
-            data: {
-                labels: locations,
-                datasets: categoryDatasets
-            },
-            options: {
-                maintainAspectRatio: false,
-                responsive: true,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            callback: function (value) {
-                                return value >= 1000 ? (value / 1000) + 'K' : value;
-                            }
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        position: 'top'
-                    }
-                }
-            }
-        });
 
         // Buat grafik variasi produk per kategori
         if (variationChart) variationChart.destroy();
@@ -303,23 +296,45 @@ document.addEventListener('DOMContentLoaded', function () {
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
+                indexAxis: 'y',
                 scales: {
+                    x: {
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Product'
+                        },
+                        grid: {
+                            color: 'white'
+                        }
+                    },
                     y: {
-                        beginAtZero: true
+                        stacked: true,
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Location'
+                        },
+                        ticks: {
+                            precision: 0
+                        }
                     }
                 },
                 plugins: {
                     legend: {
+                        display: true,
                         position: 'top'
                     }
                 }
-            }
+            },
+            plugins: [legendMargin]
         });
 
-        // Buat grafik tren AOV berdasarkan lokasi
+        // Buat grafik tren AOV
         if (aovChart) aovChart.destroy();
         aovChart = new Chart("aovChart", {
-            type: 'line',
+            type: "line",
             data: {
                 labels: months,
                 datasets: aovDatasets
@@ -328,24 +343,41 @@ document.addEventListener('DOMContentLoaded', function () {
                 maintainAspectRatio: false,
                 responsive: true,
                 scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'TransDate (Month)'
+                        },
+                        // grid: {
+                        //     color: 'white'
+                        // }
+                    },
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            callback: function (value) {
-                                return '$' + value;
-                            }
+                            precision: 0
+                        },
+                        title: {
+                            display: true,
+                            text: 'AOV'
+                        },
+                        grid: {
+                            color: 'white'
                         }
                     }
                 },
                 plugins: {
                     legend: {
+                        display: true,
                         position: 'top'
                     }
                 }
-            }
+            },
+            plugins: [legendMargin]
         });
 
-        // Buat grafik total pendapatan bulanan
+        // Buat line chart untuk total pendapatan bulanan
         if (revenueChart) revenueChart.destroy();
         revenueChart = new Chart("revenueChart", {
             type: "line",
@@ -357,47 +389,67 @@ document.addEventListener('DOMContentLoaded', function () {
                 maintainAspectRatio: false,
                 responsive: true,
                 scales: {
+                    x: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'Transaction Date (Month)'
+                        },
+                        grid: {
+                            color: 'white'
+                        },
+                    },
                     y: {
                         beginAtZero: true,
                         ticks: {
-                            callback: function (value) {
-                                return '$' + value.toLocaleString();
-                            }
+                            precision: 0
+                        },
+                        title: {
+                            display: true,
+                            text: 'Line Total'
+                        },
+                        grid: {
+                            color: 'white'
                         }
                     }
                 },
                 plugins: {
                     legend: {
+                        display: true,
                         position: 'top'
                     }
                 }
-            }
+            },
+            plugins: [legendMargin]
         });
 
-        // Buat grafik pie chart untuk payment
+        //Buat pie chart
         if (paymentChart) paymentChart.destroy();
         paymentChart = new Chart("paymentChart", {
             type: "pie",
             data: {
                 labels: paymentLabels,
                 datasets: [{
-                    data: paymentData,
-                    backgroundColor: [colors.red, colors.blue]
+                    backgroundColor: ["rgba(255, 99, 132, 0.6)", "rgba(54, 162, 235, 0.6)"],
+                    data: paymentData
                 }]
             },
             options: {
                 maintainAspectRatio: false,
                 responsive: true,
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
+                title: {
+                    display: true,
+                    text: "Payment Status"
                 }
             },
             plugins: [legendMargin]
         });
     }
 
+    document.getElementById('location').addEventListener('change', () => {
+        updateDashboard(data);
+        console.log(document.getElementById('location').value);
+    });
     function calculateMonthlyGrowthRate(monthlyRevenues) {
         let growthRates = [];
         for (let i = 1; i < monthlyRevenues.length; i++) {
