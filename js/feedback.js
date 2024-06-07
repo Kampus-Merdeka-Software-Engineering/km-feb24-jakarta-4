@@ -5,9 +5,9 @@ document.getElementById('feedbackForm').addEventListener('submit', function (eve
     const errorMessage = document.getElementById('error-message');
     const letterCountElement = document.getElementById('letterCount');
 
-    if (letterCount < 20 || letterCount > 100) {
+    if (letterCount < 1 || letterCount > 100) {
         event.preventDefault();
-        errorMessage.textContent = 'Mohon inputan di range 20-100 kata';
+        errorMessage.textContent = 'Maksimal 100 kata';
     } else {
         event.preventDefault();
         errorMessage.textContent = ''; // Clear any previous error message
@@ -25,11 +25,6 @@ document.getElementById('feedbackForm').addEventListener('submit', function (eve
         };
 
         emailjs.send("service_r68rdx9", "template_tn32aq8", templateParams)
-            .then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-            }, function (error) {
-                console.log('FAILED...', error);
-            });
 
         const feedbackList = document.getElementById('feedbackList');
         const newFeedback = document.createElement('li');

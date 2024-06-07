@@ -148,10 +148,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Hitung rata-rata peningkatan bulanan
         averageMonthlyGrowth = calculateAverage(calculateMonthlyGrowthRate(monthlyRevenues)) * 100;
-        console.log(monthlyRevenues);
-        console.log(calculateMonthlyGrowthRate(monthlyRevenues));
-        console.log(calculateAverage(calculateMonthlyGrowthRate(monthlyRevenues)) * 100);
-
 
         // Menampilkan scorecard
         document.getElementById('revenue').innerHTML = "$" + revenue;
@@ -231,7 +227,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const legendMargin = {
             id: 'legendMargin',
             beforeInit(chart, legend, options) {
-                // console.log(chart.legend.fit)
                 const fitvalue = chart.legend.fit;
 
                 chart.legend.fit = function fit() {
@@ -451,7 +446,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('location').addEventListener('change', () => {
         updateDashboard(data);
-        console.log(document.getElementById('location').value);
     });
     function calculateMonthlyGrowthRate(monthlyRevenues) {
         let growthRates = [];
