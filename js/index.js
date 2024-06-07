@@ -231,7 +231,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const legendMargin = {
             id: 'legendMargin',
             beforeInit(chart, legend, options) {
-                // console.log(chart.legend.fit)
                 const fitvalue = chart.legend.fit;
 
                 chart.legend.fit = function fit() {

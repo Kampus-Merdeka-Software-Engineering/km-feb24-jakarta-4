@@ -5,9 +5,9 @@ document.getElementById('feedbackForm').addEventListener('submit', function (eve
     const errorMessage = document.getElementById('error-message');
     const letterCountElement = document.getElementById('letterCount');
 
-    if (letterCount < 20 || letterCount > 100) {
+    if (letterCount < 5 || letterCount > 100) {
         event.preventDefault();
-        errorMessage.textContent = 'Mohon inputan di range 20-100 kata';
+        errorMessage.textContent = 'Mohon inputan di range 5-100 kata';
     } else {
         event.preventDefault();
         errorMessage.textContent = ''; // Clear any previous error message
@@ -49,3 +49,18 @@ document.getElementById('feedbackForm').addEventListener('submit', function (eve
         letterCountElement.textContent = '0 letters';
     }
 });
+
+const feedbackTextarea = document.getElementById('feedback');
+const letterCountDisplay = document.getElementById('letterCount');
+feedbackTextarea.addEventListener('input', updateLetterCount);
+function updateLetterCount() {
+    const text = feedbackTextarea.value;
+    const letterCount = text.length;
+    letterCountDisplay.textContent = `${letterCount} letters`;
+    if (letterCount < 5 || letterCount > 100) {
+        feedbackTextarea.classList.add('error');
+    } else {
+        feedbackTextarea.classList.remove('error');
+    }
+}
+
