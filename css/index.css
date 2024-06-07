@@ -853,7 +853,7 @@ button:hover {
     }
 
     .menu-toggle.active div:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
+        transform: rotate(-45deg) translate(-9px, 5px);
     }
 
     .menu-toggle.active div:nth-child(2) {
@@ -861,7 +861,7 @@ button:hover {
     }
 
     .menu-toggle.active div:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
+        transform: rotate(45deg) translate(-8px, -5px);
     }
 
     @keyframes slideFromRight {
