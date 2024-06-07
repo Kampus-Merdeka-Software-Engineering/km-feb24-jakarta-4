@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let aovChart = null;
     let revenueChart = null;
     let paymentChart = null;
+    let categoryChart = null;
 
     // Pendeklarsian variabel untuk data
     let data = null;
@@ -14,14 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     //Pendeklarasian warna
-    // Variabel Globar untuk warna chart (colors and border colors)
     const colors = {
         red: "rgba(255, 0, 0, 0.6)",
         yellow: "rgba(255, 255, 0, 0.6)",
         blue: "rgba(0, 0, 255, 0.6)",
-        green: "rgba(0, 128, 0, 0.6)",
-        pink: "rgba(255, 99, 132, 0.6)",
-        lightBlue: "rgba(54, 162, 235, 0.6)"
+        green: "rgba(0, 128, 0, 0.6)"
     };
 
     const borderColors = {
@@ -37,33 +35,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const categories = ["Food", "Carbonated", "Non Carbonated", "Water"];
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+    async function fetchData() {
+        let response = await fetch('./vending_machine_sales.json');
+        data = await response.json();
+        updateDashboard(data);
+    }
+
     //Filterisasi Periode date
-    async function selectedMonth(idx) {
+    function selectedMonth(idx) {
         // Toggle the selected month filter
         monthsFilter[idx] = !monthsFilter[idx]
-        let data = await fetchData()
-        updateChart(data)
     }
 
     let els = document.getElementsByClassName('monthsFilter')
     for (let i = 0; i < els.length; i++) {
         els[i].addEventListener('click', () => {
-            selectedMonth(i)
+            updateDashboard(data, i)
         })
     }
 
-    async function main() {
-        let data = await fetchData()
-        updateChartAndTable(data);
-    }
-
-    async function fetchData() {
-        let response = await fetch('./vending_machine_sales.json');
-        data = await response.json();
-        return data
-    }
-
-    function updateChartAndTable(data) {
+    function updateDashboard(data, idx) {
+        selectedMonth(idx);
         let filteredData = filterDataByLocation(data);
         updateChart(filteredData)
     }
@@ -122,7 +114,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Proses data
         data.forEach(entry => {
             let date = new Date(entry.TransDate);
-            let month = date.getMonth(); // 0 untuk     Januari, 1 untuk Februari, dll.
+            let month = date.getMonth();
+            if (!monthsFilter[month]) return;
+
             let location = entry.Location;
             let total = parseFloat(entry.LineTotal);
             let category = entry.Category;
@@ -154,7 +148,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Hitung rata-rata peningkatan bulanan
         averageMonthlyGrowth = calculateAverage(calculateMonthlyGrowthRate(monthlyRevenues)) * 100;
-        console.log(monthlyTotals, aovMonthlyTotals, aovMonthlyCounts);
+        console.log(monthlyRevenues);
+        console.log(calculateMonthlyGrowthRate(monthlyRevenues));
+        console.log(calculateAverage(calculateMonthlyGrowthRate(monthlyRevenues)) * 100);
+
 
         // Menampilkan scorecard
         document.getElementById('revenue').innerHTML = "$" + revenue;
@@ -164,9 +161,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Siapkan datasets untuk total penjualan bulanan
         let monthlyDatasets = locations.map((location, index) => {
-            // let colors = ["rgba(255, 0, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(0, 0, 255, 0.6)", "rgba(0, 128, 0, 0.6)"];
-            // let borderColors = ["rgba(255, 0, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(0, 128, 0, 1)"];
-
             return {
                 label: location,
                 backgroundColor: colors[index],
@@ -178,9 +172,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Siapkan datasets untuk total penjualan per kategori
         let categoryDatasets = categories.map((category, index) => {
-            // let colors = ["rgba(255, 0, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(0, 0, 255, 0.6)", "rgba(0, 128, 0, 0.6)"];
-            // let borderColors = ["rgba(255, 0, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(0, 128, 0, 1)"];
-
             return {
                 label: category,
                 backgroundColor: colors[index],
@@ -192,9 +183,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Siapkan datasets untuk variasi produk per kategori
         let variationDatasets = categories.map((category, index) => {
-            // let colors = ["rgba(255, 0, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(0, 0, 255, 0.6)", "rgba(0, 128, 0, 0.6)"];
-            // let borderColors = ["rgba(255, 0, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(0, 128, 0, 1)"];
-
             return {
                 label: category,
                 backgroundColor: colors[index],
@@ -206,28 +194,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Siapkan datasets untuk tren AOV berdasarkan lokasi
         let aovDatasets = locations.map((location, index) => {
-            let color;
-            switch (location) {
-                case "Earle Asphalt":
-                    color = "rgba(0, 128, 0, 0.6)"; // Hijau
-                    break;
-                case "GuttenPlans":
-                    color = "rgba(255, 0, 0, 0.6)"; // Merah
-                    break;
-                case "EB Public Library":
-                    color = "rgba(255, 255, 0, 0.6)"; // Kuning
-                    break;
-                case "Brunswick Sq Mall":
-                    color = "rgba(0, 0, 255, 0.6)"; // Biru
-                    break;
-                default:
-                    color = "rgba(0, 0, 0, 0.6)"; // Default hitam
-            }
-
             return {
                 label: location,
-                backgroundColor: color,
-                borderColor: color,
+                backgroundColor: colors[index],
+                borderColor: borderColors[index],
                 borderWidth: 2,
                 data: aovMonthlyTotals[location].map((total, month) => {
                     return (total / aovMonthlyCounts[location][month]).toFixed(2);
@@ -235,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 fill: false,
                 pointRadius: 5,
                 pointHoverRadius: 7,
-                pointBackgroundColor: color,
+                pointBackgroundColor: colors[index],
                 pointBorderColor: '#fff'
             };
         });
@@ -480,29 +450,32 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     document.getElementById('location').addEventListener('change', () => {
-        updateChartAndTable(data);
+        updateDashboard(data);
         console.log(document.getElementById('location').value);
     });
-
-    main();
-});
-
-// list function tambahan
-// Fungsi untuk menghitung growth rate bulanan
-function calculateMonthlyGrowthRate(monthlySales) {
-    const months = Object.keys(monthlySales);
-    const growthRates = [];
-    for (let i = 1; i < months.length; i++) {
-        const previousMonth = months[i - 1];
-        const currentMonth = months[i];
-        const growthRate = monthlySales[i - 1] === 0 ? 0 : (monthlySales[currentMonth] - monthlySales[previousMonth]) / monthlySales[previousMonth];
-        growthRates.push(growthRate);
+    function calculateMonthlyGrowthRate(monthlyRevenues) {
+        let growthRates = [];
+        for (let i = 1; i < monthlyRevenues.length; i++) {
+            let growthRate = (monthlyRevenues[i] === 0 || monthlyRevenues[i - 1] === 0) ? 0 :
+                (monthlyRevenues[i] - monthlyRevenues[i - 1]) / monthlyRevenues[i - 1];
+            growthRates.push(growthRate);
+        }
+        return growthRates.filter(rate => rate !== 0);
     }
-    return growthRates;
-}
 
-// Fungsi untuk menghitung rata-rata dari array
-function calculateAverage(array) {
-    const sum = array.reduce((acc, value) => acc + value, 0);
-    return sum / array.length;
-}
+    function calculateAverage(arr) {
+        let validValues = arr.filter(value => isFinite(value));
+        if (validValues.length === 0) return 0;
+        let sum = validValues.reduce((acc, val) => acc + val, 0);
+        return sum / validValues.length;
+    }
+
+    // Fetch data from JSON and update chart
+    fetchData();
+
+    // Attach event listener to dropdown for location filter
+    document.getElementById('location').addEventListener('change', function () {
+        let filteredData = filterDataByLocation(data);
+        updateChart(filteredData);
+    });
+});

@@ -42,7 +42,7 @@ header {
     background-repeat: no-repeat;
     background-position: 100%;
     position: relative;
-    margin-top: 2.5rem;
+    margin-top: 2rem;
     color: white;
 }
 
@@ -72,7 +72,6 @@ header {
     font-size: 18px;
     text-align: justify;
     line-height: 1.4;
-
 }
 
 /* Header */
@@ -167,21 +166,24 @@ nav ul li a:hover {
 }
 
 .filterlocation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 15rem;
     border-radius: 1rem;
-    padding: 1rem;
+    padding: 0.5rem;
     background-color: #333545;
 }
 
 #location {
-    left: 18rem;
-    border-radius: 1rem;
-    padding: 0.5rem;
+    height: 1.5rem;
+    border-radius: 0.5rem;
     background-color: #FFBCED;
     color: rgb(16, 15, 15);
 }
 
 .periode {
-    width: 14rem;
+    width: 15rem;
     position: relative;
     margin-right: 0.5rem;
 }
@@ -376,30 +378,28 @@ table th {
     display: flex;
     min-height: 100vh;
     color: white;
-    padding: 9rem 2% 0;
+    padding: 8rem 2% 0;
 }
 
 #kiri {
-    width: 70%;
-}
-
-#kanan {
-    align-items: center;
+    width: 100%;
 }
 
 #kiri #judul {
     font-size: 40px;
 }
 
+#paragraph {
+    margin-top: 5rem;
+}
+
 #paragraph h1,
 #judul span {
-    margin-top: 100px;
     background-color: rgb(193, 43, 193);
     padding: 0.4em;
     line-height: 1;
     font-size: 40px;
     justify-content: center;
-    align-items: center;
     position: relative;
     display: inline-block;
 }
@@ -408,7 +408,7 @@ table th {
     margin-top: 1rem;
     text-align: justify;
     line-height: 1.4;
-    width: 80%;
+    width: 90%;
 }
 
 .list_kanan {
@@ -507,6 +507,218 @@ footer {
     bottom: 0;
 }
 
+/* Feedback */
+
+.feedback {
+    min-height: 100vh;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url("../assets/images/Feedback.png");
+    background-size: 50% 80%;
+    background-repeat: no-repeat;
+    background-position: left;
+    margin: auto;
+    position: relative;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+
+.containerFeddback {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding: 20px;
+}
+
+.feedback-form {
+    width: 55%;
+    border-radius: 1rem;
+    position: relative;
+    text-align: center;
+    align-content: center;
+    height: auto;
+    padding: 1rem;
+    margin-top: 2rem;
+    background-color: #333;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.feedback h2 {
+    margin-bottom: 1.5rem;
+}
+
+.feedback-form h2 span {
+    background-color: rgb(193, 43, 193);
+    border-radius: 5px;
+    padding: 0.1rem;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"],
+category,
+textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.rating {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.rating input {
+    display: none;
+}
+
+.rating label {
+    font-size: 30px;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.rating input:checked~label,
+.rating input:hover~label,
+.rating label:hover~input:checked~label {
+    color: gold;
+}
+
+button {
+    background-color: rgb(193, 43, 193);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+}
+
+button:hover {
+    background-color: #ff1493;
+}
+
+.thank-you-message {
+    display: none;
+    margin-top: 20px;
+    font-size: 1.2em;
+    letter-spacing: 1px;
+}
+
+.thank-you-message span {
+    background-color: #ff69b4;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+
+.feedback-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.feedback-form input[type="text"],
+.feedback-form select,
+.feedback-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.feedback-form .rating {
+    display: flex;
+    /* justify-content:space-evenly; */
+    margin-bottom: 15px;
+
+}
+
+.feedback-form .rating input[type="radio"] {
+    display: none;
+}
+
+.feedback-form .rating label {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.feedback-form .rating input[type="radio"]:checked+label {
+    color: gold;
+}
+
+.feedback-form .textarea-container {
+    position: relative;
+}
+
+#letterCount {
+    position: absolute;
+    display: flex;
+    bottom: 30px;
+    right: 20px;
+    font-size: 12px;
+    color: #888;
+}
+
+#thankYouMessage {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.list {
+    max-width: 100%;
+}
+
+#feedbackList {
+    list-style: none;
+    padding: 0 2%;
+    width: 100%;
+    align-content: center;
+}
+
+#feedbackList li {
+    background-color: #555555;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: #fff;
+    line-height: 1.4;
+}
+
+
+.user-feedback {
+    display: none;
+    background-color: #444;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.user-feedback h2 {
+    margin-top: 0;
+}
+
+.error {
+    color: red;
+}
+
+#error-message {
+    font-size: 15px;
+    text-align: start;
+}
+
+
 
 /* Responsif */
 /* Laptop */
@@ -542,6 +754,14 @@ footer {
     .list-items {
         max-width: 180px;
     }
+
+    .feedback-form {
+        max-width: 90%;
+        margin-right: 0;
+
+    }
+
+
 }
 
 
@@ -550,20 +770,6 @@ footer {
 @media (max-width: 768px) {
     html {
         margin-top: 0.1rem;
-    }
-
-    #kiri {
-        width: 100%;
-        padding: 1rem;
-    }
-
-    .insight {
-        flex-wrap: wrap;
-        gap: 2rem;
-    }
-
-    #paragraph p {
-        width: 100%;
     }
 
     .landing-Page .text {
@@ -584,14 +790,12 @@ footer {
         max-width: 80%;
     }
 
-
+    .menu-toggle {
+        display: block;
+    }
 
     .logo-responsif {
         display: none;
-    }
-
-    .menu-toggle {
-        display: block;
     }
 
     .logo img {
@@ -673,124 +877,127 @@ footer {
     }
 
 
-
-    /* Mobile */
-    @media (max-width: 576px) {
-
-        #kiri {
-            width: 100%;
-            padding: 1rem;
-
-        }
-
-        .insight {
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-
-        #paragraph p {
-            width: 100%;
-        }
-
-        .text h1 {
-            font-size: 25px;
-        }
-
-        .text h2 {
-            font-size: 16px;
-            width: 100%;
-        }
-
-        .text p {
-            max-width: 100%;
-        }
-
-
-        .menu-toggle {
-            display: block;
-        }
-
-        nav ul {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            padding: 1rem;
-            display: none;
-            width: 40%;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgba(37, 57, 85, 0.7);
-            box-shadow: -10px 0 10px rgba(250, 244, 244, 0.20);
-            animation: slideFromRight 0.5s ease;
-            height: 100vh;
-        }
-
-        nav ul.active {
-            display: flex;
-        }
-
-        nav ul li {
-            margin-right: 0;
-            margin: 2rem 0 2rem;
-        }
-
-        nav ul li a {
-            color: #fff;
-        }
-
-        .navbar ul .logo-responsif {
-            display: block;
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            display: none;
-        }
-
-        .menu-toggle.active div:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .menu-toggle.active div:nth-child(2) {
-            opacity: 0;
-        }
-
-        .menu-toggle.active div:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-
-        @keyframes slideFromRight {
-            from {
-                transform: translateX(100%);
-            }
-
-            to {
-                transform: translateX(0);
-            }
-        }
-
-        .chart-container,
-        .table-container,
-        .pay-container {
-            flex: 1 1 100%;
-            max-width: 100%;
-        }
-
-        .table-container {
-            margin: 0rem;
-        }
-
-        #teamjudul h2 {
-            padding: 0 5rem;
-        }
-
-        #kiri h1,
-        #judul span,
-        #kiri #judul {
-            font-size: 21px;
-            margin-right: 1rem;
-
-        }
-
+    .insight {
+        flex-wrap: wrap;
+        gap: 2rem;
     }
+
+
+    #kiri #judul {
+        font-size: 35px;
+    }
+
+    #paragraph h1,
+    #judul span {
+        font-size: 35px;
+    }
+
+    #paragraph p {
+        width: 95%;
+        justify-content: center;
+    }
+
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+
+    .landing-Page .text {
+        padding: 0 3%;
+        max-width: 65%;
+    }
+
+    .text h1 {
+        font-size: 30px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    nav ul {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 1rem;
+        display: none;
+        width: 40%;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(37, 57, 85, 0.7);
+        box-shadow: -10px 0 10px rgba(250, 244, 244, 0.20);
+        animation: slideFromRight 0.5s ease;
+        height: 100vh;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        margin-right: 0;
+        margin: 2rem 0 2rem;
+    }
+
+    nav ul li a {
+        color: #fff;
+    }
+
+    .navbar ul .logo-responsif {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .logo img {
+        display: none;
+    }
+
+    .menu-toggle.active div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .menu-toggle.active div:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    @keyframes slideFromRight {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0);
+        }
+    }
+
+    .chart-container,
+    .table-container,
+    .pay-container {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .table-container {
+        margin: 0.2rem;
+    }
+
+
+    #kiri #judul {
+        font-size: 35px;
+    }
+
+    #paragraph h1,
+    #judul span {
+        font-size: 35px;
+    }
+
+
+
+
+
+
 }

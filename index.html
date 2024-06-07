@@ -39,23 +39,23 @@
                 <ul>
                     <li class="logo-responsif"><img src="assets/images/vending-machine.png" alt="Logo"></li>
                     <li>
-                        <a href="#dashboard">
+                        <a href="#Dashboard">
                             <span class="material-icons">dashboard</span>
                             Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="#insight">
+                        <a href="#insights">
                             <span class="material-symbols-outlined">query_stats</span>Insight
                         </a>
                     </li>
                     <li>
-                        <a href="#team">
+                        <a href="#teams">
                             <span class="material-symbols-outlined">groups</span>Team
                         </a>
                     </li>
                     <li>
-                        <a href="#Feedback">
+                        <a href="#feedbacks">
                             <span class="material-symbols-outlined">comment</span>Feedback
 
                         </a>
@@ -76,7 +76,7 @@
         <!-- End Header Navbar  -->
 
         <!--Landing Page -->
-        <section class="landing-Page">
+        <section class="landing-Page" id="landingPage">
             <div class=" text">
                 <h1>Vending Machine </h1>
                 <h1>Central New Jersey</h1>
@@ -85,69 +85,57 @@
                     Jersey. We are dedicated to offering convenient and efficient solution for a wide range of settings,
                     from public spaces to corporate environments.</p>
             </div>
-
         </section>
         <!--End Landing Page -->
 
         <!-- Dashboard -->
-        <section class=" dashboard" id="dashboard">
+        <section class=" dashboard" id="Dashboard">
             <!-- filter -->
             <div class="filter">
                 <div class="periode">
                     <div class="select-btn">
-                        <span class="btn-text"> Periode Date</span>
+                        <span class="btn-text"> Periode </span>
                         <span class="arrow-dwn">
                             <span class="material-symbols-outlined"> arrow_drop_down</span>
                         </span>
                     </div>
                     <ul class="list-items">
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(0)"
-                                checked="">Januari
+                            <input class="item-text monthsFilter" type="checkbox" checked="">Januari
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(1)"
-                                checked="">Februari</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">Februari</span>
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(2)"
-                                checked="">Maret</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">Maret</span>
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(3)"
-                                checked="">April</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">April</span>
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(4)"
-                                checked="">Mei</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">Mei</span>
                         </li>
                         <li class="item">
                             <input class="item-text monthsFilter" id="selectallchekcbox" type="checkbox"
-                                onclick="selectedMonth(5)" checked="">Juni</span>
+                                checked="">Juni</span>
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(6)"
-                                checked="">Juli</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">Juli</span>
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(7)"
-                                checked="">Agustus</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">Agustus</span>
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(8)"
-                                checked="">September</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">September</span>
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(9)"
-                                checked="">Oktober</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">Oktober</span>
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(10)"
-                                checked="">November</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">November</span>
                         </li>
                         <li class="item">
-                            <input class="item-text monthsFilter" type="checkbox" onclick="selectedMonth(11)"
-                                checked="">Desember</span>
+                            <input class="item-text monthsFilter" type="checkbox" checked="">Desember</span>
                         </li>
                     </ul>
                 </div>
@@ -238,7 +226,7 @@
         <!-- End Dashboard -->
 
         <!--Insight-->
-        <section class="insight" id="insight">
+        <section class="insight" id="insights">
             <div id="kiri">
                 <h1 id="judul">PROPOSED
                     <span>SOLUTION</span>
@@ -290,7 +278,7 @@
         <!-- End Insight -->
 
         <!-- Team -->
-        <section class="team" id="team">
+        <section class="team" id="teams">
 
             <div class="row">
                 <div id="teamjudul">
@@ -353,6 +341,63 @@
             </div>
         </section>
         <!-- End Team -->
+
+        <!-- Feedback -->
+        <section class="feedback" id="feedbacks">
+            <div class="containerFeddback">
+                <div class="feedback-form">
+                    <h2>GIVE US YOUR <span>FEEDBACK</span></h2>
+                    <form id="feedbackForm">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label>Rate your experience of using our website</label>
+                        <div class="rating">
+                            <input type="radio" id="star5" name="rating" value="5" required>
+                            <label for="star5" title="Excellent">&#9733;</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="Very good">&#9733;</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="Good">&#9733;</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="Fair">&#9733;</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="Poor">&#9733;</label>
+                        </div>
+
+                        <label for="category">Select your feedback category</label>
+                        <select id="category" name="category" required>
+                            <option value="Website">Website</option>
+                            <option value="Service">Service</option>
+                            <option value="Product">Product</option>
+                            <option value="Other">Other</option>
+                        </select>
+
+                        <label for="feedback">Describe your feedback</label>
+                        <div class="textarea-container">
+                            <textarea id="feedback" name="feedback" rows="3" required></textarea>
+                            <!-- <div id="letterCount">0 letters</div> -->
+                            <div id="error-message" style="color: red;"></div> <!-- Error message container -->
+                        </div>
+
+                        <button type="submit">Submit</button>
+                    </form>
+
+                    <div id="thankYouMessage" class="thank-you-message">
+                        THANK YOU FOR YOUR FEEDBACK
+                        <h2>Feedback Review</h2>
+                        <div class="list">
+                            <ul id="feedbackList"></ul>
+                        </div>
+                    </div>
+
+                    <div id="userFeedback" class="user-feedback">
+                        <!-- User feedback will be displayed here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Feedback -->
     </main>
 
     <!-- Footer -->
@@ -362,18 +407,45 @@
     <!--End Footer -->
 
     <!-- My Javascript -->
+
+    <!-- Javascript Toggel -->
     <script src="./js/script.js"></script>
+
+    <!-- Integrasi Chart.Js  -->
     <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"
         integrity="sha512-ZwR1/gSZM3ai6vCdI+LVF1zSq/5HznD3ZSTk7kajkaj4D292NLuduDCO1c/NT8Id+jE58KYLKT7hXnbtryGmMg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Pembuatan & Manipulasi Chart -->
     <script type="module" src="./js/index.js"></script>
+
+    <!--  Penunjang DataTables  -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+    <!-- Manipulasi DataTables -->
     <script src="./js/table.js"></script>
-    <script src="./js/filter.js"></script>
+    <!-- feeedback js -->
+    <script src="./js/feedback.js"></script>
+    <!-- EmailJS -->
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+    <script>
+        (function () {
+            emailjs.init("team4.jakarta.tarevou@gmail.com");
+        })();
+    </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">(function () { emailjs.init({ publicKey: "dejK-OGi4spdPzWX2", }); })();
+    </script>
+
     <!-- End Link Javascript -->
 </body>
 
