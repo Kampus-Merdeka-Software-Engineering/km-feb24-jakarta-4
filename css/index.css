@@ -31,6 +31,7 @@ header {
     cursor: pointer;
 }
 
+
 /* landing page */
 
 .landing-Page {
@@ -76,6 +77,11 @@ header {
 }
 
 /* Header */
+
+.logo-text {
+    display: none;
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -91,15 +97,13 @@ header {
     margin-right: 1rem;
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
-}
+
 
 .logo-text p,
 .logo-text h2 {
     margin: 0;
     font-size: 18px;
+
 }
 
 nav ul {
@@ -652,7 +656,6 @@ button:hover {
 
 .feedback-form .rating {
     display: flex;
-    /* justify-content:space-evenly; */
     margin-bottom: 15px;
 
 }
@@ -690,6 +693,7 @@ button:hover {
 
 #feedbackList {
     list-style: none;
+    font-size: 16px;
     padding: 0 2%;
     width: 100%;
     align-content: center;
@@ -735,11 +739,11 @@ button:hover {
 /* Responsif */
 /* Laptop */
 @media (max-width: 1480px) {
-
     .landing-Page .text {
         padding: 0 2%;
         max-width: 60%;
     }
+
 
     .text h1 {
         font-size: 45px;
@@ -784,8 +788,12 @@ button:hover {
         margin-top: 0.1rem;
     }
 
+    .logo-text {
+        display: block;
+    }
+
     .landing-Page {
-        margin-top: 0.5rem;
+        margin-top: 0rem;
     }
 
     .landing-Page .text {
@@ -917,10 +925,13 @@ button:hover {
 
 /* Mobile */
 @media (max-width: 576px) {
-
     .landing-Page .text {
         padding: 0 3%;
         max-width: 65%;
+    }
+
+    .logo-text {
+        display: block;
     }
 
     .text h1 {
@@ -969,7 +980,7 @@ button:hover {
     }
 
     .menu-toggle.active div:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
+        transform: rotate(-45deg) translate(-9px, 5px);
     }
 
     .menu-toggle.active div:nth-child(2) {
@@ -977,7 +988,7 @@ button:hover {
     }
 
     .menu-toggle.active div:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
+        transform: rotate(45deg) translate(-8px, -5px);
     }
 
     @keyframes slideFromRight {

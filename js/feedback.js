@@ -10,8 +10,9 @@ document.getElementById('feedbackForm').addEventListener('submit', function (eve
         errorMessage.textContent = 'Mohon inputan di range 5-100 kata';
     } else {
         event.preventDefault();
-        errorMessage.textContent = ''; // Clear any previous error message
+        errorMessage.textContent = '';
 
+        // Clear any previous error message
         const name = document.getElementById('name').value;
         const rating = document.querySelector('input[name="rating"]:checked').value;
         const category = document.getElementById('category').value;
@@ -25,11 +26,6 @@ document.getElementById('feedbackForm').addEventListener('submit', function (eve
         };
 
         emailjs.send("service_r68rdx9", "template_tn32aq8", templateParams)
-            .then(function (response) {
-                console.log('SUCCESS!', response.status, response.text);
-            }, function (error) {
-                console.log('FAILED...', error);
-            });
 
         const feedbackList = document.getElementById('feedbackList');
         const newFeedback = document.createElement('li');
