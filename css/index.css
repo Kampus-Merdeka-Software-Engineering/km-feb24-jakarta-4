@@ -6,7 +6,7 @@
     border: none;
     text-decoration: none;
     box-sizing: border-box;
-    cursor: pointer;
+    scroll-behavior: smooth;
 }
 
 body {
@@ -28,6 +28,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
 }
 
 /* landing page */
@@ -173,6 +174,7 @@ nav ul li a:hover {
     border-radius: 1rem;
     padding: 0.5rem;
     background-color: #333545;
+    cursor: pointer;
 }
 
 #location {
@@ -186,6 +188,7 @@ nav ul li a:hover {
     width: 15rem;
     position: relative;
     margin-right: 0.5rem;
+    cursor: pointer;
 }
 
 .select-btn {
@@ -675,15 +678,12 @@ button:hover {
     margin-top: 20px;
 }
 
-.list {
-    max-width: 100%;
-}
-
 #feedbackList {
     list-style: none;
     padding: 0 2%;
     width: 100%;
     align-content: center;
+    word-wrap: break-word;
 }
 
 #feedbackList li {
@@ -693,6 +693,8 @@ button:hover {
     margin-bottom: 10px;
     color: #fff;
     line-height: 1.4;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 
