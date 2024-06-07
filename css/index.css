@@ -31,9 +31,7 @@ header {
     cursor: pointer;
 }
 
-
 /* landing page */
-
 .landing-Page {
     min-height: 100vh;
     max-width: 100%;
@@ -77,7 +75,6 @@ header {
 }
 
 /* Header */
-
 .logo-text {
     display: none;
 }
@@ -97,13 +94,10 @@ header {
     margin-right: 1rem;
 }
 
-
-
 .logo-text p,
 .logo-text h2 {
     margin: 0;
     font-size: 18px;
-
 }
 
 nav ul {
@@ -171,7 +165,6 @@ nav ul li a:hover {
 }
 
 /* Filtering */
-
 .filter {
     display: flex;
     max-width: 100%;
@@ -303,7 +296,6 @@ input {
     font-size: 14px;
 }
 
-
 .flexbox {
     display: flex;
     flex-wrap: wrap;
@@ -326,7 +318,6 @@ input {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border: 1px solid #121212;
 }
-
 
 .pay-container {
     display: flex;
@@ -367,9 +358,7 @@ canvas {
     background-color: #ffffff;
 }
 
-
 /* tabel  */
-
 table th {
     background-color: #2c3a4e;
     color: #ffffff;
@@ -388,9 +377,7 @@ table th {
     color: #fff;
 }
 
-
 /* Insight */
-
 .insight {
     display: flex;
     min-height: 100vh;
@@ -433,7 +420,6 @@ table th {
     color: black;
     margin-bottom: 2rem;
     width: 100%;
-
 }
 
 .no {
@@ -499,7 +485,6 @@ table th {
     margin-bottom: 0;
 }
 
-
 .header_photos,
 .photo-item img {
     height: 10rem;
@@ -525,7 +510,6 @@ footer {
 }
 
 /* Feedback */
-
 .feedback {
     min-height: 100vh;
     max-width: 100%;
@@ -637,7 +621,6 @@ button:hover {
     border-radius: 5px;
 }
 
-
 .feedback-form label {
     display: block;
     margin-bottom: 5px;
@@ -657,7 +640,6 @@ button:hover {
 .feedback-form .rating {
     display: flex;
     margin-bottom: 15px;
-
 }
 
 .feedback-form .rating input[type="radio"] {
@@ -711,7 +693,6 @@ button:hover {
     word-break: break-all;
 }
 
-
 .user-feedback {
     display: none;
     background-color: #444;
@@ -734,8 +715,6 @@ button:hover {
     text-align: start;
 }
 
-
-
 /* Responsif */
 /* Laptop */
 @media (max-width: 1480px) {
@@ -743,7 +722,6 @@ button:hover {
         padding: 0 2%;
         max-width: 60%;
     }
-
 
     .text h1 {
         font-size: 45px;
@@ -774,13 +752,8 @@ button:hover {
     .feedback-form {
         max-width: 90%;
         margin-right: 0;
-
     }
-
-
 }
-
-
 
 /* Tablet */
 @media (max-width: 768px) {
@@ -900,12 +873,10 @@ button:hover {
         }
     }
 
-
     .insight {
         flex-wrap: wrap;
         gap: 2rem;
     }
-
 
     #kiri #judul {
         font-size: 35px;
@@ -920,7 +891,6 @@ button:hover {
         width: 95%;
         justify-content: center;
     }
-
 }
 
 /* Mobile */
@@ -1012,7 +982,6 @@ button:hover {
         margin: 0.2rem;
     }
 
-
     #kiri #judul {
         font-size: 35px;
     }
@@ -1021,10 +990,4 @@ button:hover {
     #judul span {
         font-size: 35px;
     }
-
-
-
-
-
-
 }

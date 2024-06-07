@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <!-- Font -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Inter:wght@100..900&display=swap" />
@@ -71,7 +72,6 @@
                 <div></div>
             </div>
             <!--End Menu Toggle -->
-
         </header>
         <!-- End Header Navbar  -->
 
@@ -152,6 +152,7 @@
                 </div>
             </div>
 
+            <!-- Score Card -->
             <div class="Metrik">
                 <div>
                     <h2>Revenue</h2>
@@ -173,7 +174,6 @@
             </div>
 
             <!--Chart  -->
-
             <div class="flexbox">
                 <div class="chart-container">
                     <h2>MONTHLY SALES BASED ON LOCATION</h2>
@@ -222,7 +222,6 @@
             </div>
             </div>
         </section>
-
         <!-- End Dashboard -->
 
         <!--Insight-->
@@ -279,12 +278,12 @@
 
         <!-- Team -->
         <section class="team" id="teams">
-
             <div class="row">
                 <div id="teamjudul">
                     <h1>Meet Our </h1>
                     <h2>Team</h2>
                 </div>
+
                 <div class="photo-item">
                     <img src="assets/images/Afni-Khoerun-Nisa.jpg" alt="Afni Koerun Nisa" />
                     <p>Afni Koerun Nisa</p>
@@ -350,7 +349,6 @@
                     <form id="feedbackForm">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
-
                         <label>Rate your experience of using our website</label>
                         <div class="rating">
                             <input type="radio" id="star5" name="rating" value="5" required>
@@ -379,7 +377,6 @@
                             <div id="letterCount">0 letters</div>
                             <div id="error-message" style="color: red;"></div> <!-- Error message container -->
                         </div>
-
                         <button type="submit">Submit</button>
                     </form>
 
@@ -388,9 +385,8 @@
                         <h2>Feedback Review</h2>
                         <ul id="feedbackList"></ul>
                     </div>
-
+                    <!-- User feedback will be displayed here -->
                     <div id="userFeedback" class="user-feedback">
-                        <!-- User feedback will be displayed here -->
                     </div>
                 </div>
             </div>
@@ -405,7 +401,6 @@
     <!--End Footer -->
 
     <!-- My Javascript -->
-
     <!-- Javascript Toggel -->
     <script src="./js/script.js"></script>
 
@@ -428,8 +423,10 @@
 
     <!-- Manipulasi DataTables -->
     <script src="./js/table.js"></script>
+
     <!-- feeedback js -->
     <script src="./js/feedback.js"></script>
+
     <!-- EmailJS -->
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
@@ -438,12 +435,10 @@
             emailjs.init("team4.jakarta.tarevou@gmail.com");
         })();
     </script>
-
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
     </script>
     <script type="text/javascript">(function () { emailjs.init({ publicKey: "dejK-OGi4spdPzWX2", }); })();
     </script>
-
     <!-- End Link Javascript -->
 </body>
 
