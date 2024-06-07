@@ -23,7 +23,7 @@ header {
     width: 100%;
     background-color: rgb(255, 255, 255);
     border-bottom: 1px solid rgba(37, 57, 85, 0.8);
-    color: #0f0e0e;
+    color: black;
     padding: 0.5rem;
     display: flex;
     justify-content: space-between;
@@ -116,6 +116,7 @@ nav ul li a {
     gap: 0.5rem;
     font-weight: 100;
     font-size: 18px;
+    color: black;
 }
 
 .navbar span {
@@ -135,7 +136,7 @@ nav ul li a:hover {
     padding: 0.5rem;
     border-radius: 0.5rem;
     color: rgb(237, 239, 215);
-    border-bottom: 1px solid rgba(5, 28, 55, 0.532);
+    border-bottom: 2px solid rgba(29, 113, 208, 0.532);
 }
 
 /* Hamburger Icon */
