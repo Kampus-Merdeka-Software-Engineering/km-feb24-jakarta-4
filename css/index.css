@@ -24,7 +24,7 @@ header {
     background-color: rgba(37, 57, 85, 0.8);
     border-bottom: 1px solid #ffffff;
     color: #fff;
-    padding: 2rem;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,50 @@ header {
 
 /* landing page */
 
+.landing-Page {
+    min-height: 100vh;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    background-image: url("../assets/images/VENDING\ MACHINE.png");
+    background-size: 75% 81%;
+    background-repeat: no-repeat;
+    background-position: 100%;
+    position: relative;
+    margin-top: 2.5rem;
+    color: white;
+}
 
+.landing-Page .text {
+    padding: 0 2%;
+    max-width: 50%;
+    align-content: center;
+}
+
+.text h1 {
+    line-height: 1.1;
+    font-size: 70px;
+    margin-bottom: 0.5rem;
+}
+
+.text h2 {
+    text-align: center;
+    justify-content: center;
+    width: 80%;
+    padding: 1rem;
+    border-radius: 1rem;
+    background-color: rgb(223, 50, 165);
+}
+
+.text p {
+    margin-top: 1rem;
+    font-size: 18px;
+    text-align: justify;
+    line-height: 1.4;
+
+}
+
+/* Header */
 .logo {
     display: flex;
     align-items: center;
@@ -54,14 +97,14 @@ header {
 }
 
 .logo-text p,
-.logo-text h1 {
+.logo-text h2 {
     margin: 0;
+    font-size: 18px;
 }
 
 nav ul {
     list-style: none;
     align-items: center;
-    gap: 1.5rem;
     display: flex;
     padding: 0;
     margin: 0;
@@ -69,12 +112,13 @@ nav ul {
 
 nav ul li a {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    margin-right: 1rem;
     gap: 0.5rem;
     color: azure;
     font-weight: 100;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 nav ul li:last-child {
@@ -108,44 +152,42 @@ nav ul li a:hover {
 /* Dashboard */
 .dashboard {
     min-height: 100vh;
-    padding: 7rem 1% 1.4rem;
+    align-content: center;
+    padding: 7rem 1% 0;
 }
 
 /* Filtering */
 
 .filter {
-    /* position: fixed; */
     display: flex;
-    flex-wrap: wrap;
-    padding: 1rem;
-    width: 100%;
+    max-width: 100%;
     border-radius: 1rem;
-    margin-top: 1rem;
+    color: white;
+    margin-left: 1rem;
 }
 
 .filterlocation {
     border-radius: 1rem;
     padding: 1rem;
     background-color: #333545;
-    color: white;
 }
 
 #location {
     left: 18rem;
     border-radius: 1rem;
     padding: 0.5rem;
-    background-color: #6e93f7;
-    color: white;
+    background-color: #FFBCED;
+    color: rgb(16, 15, 15);
 }
 
 .periode {
+    width: 14rem;
     position: relative;
-    margin-right: 1rem;
+    margin-right: 0.5rem;
 }
 
 .select-btn {
     display: flex;
-    width: 15rem;
     padding: 1rem;
     border-radius: 1rem;
     align-items: center;
@@ -164,8 +206,8 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     transition: 1s;
-    background: #6e93f7;
-    color: #fff;
+    background: #FFBCED;
+    color: #121111;
 }
 
 .select-btn.open .arrow-dwn {
@@ -181,7 +223,7 @@ nav ul li a:hover {
     border-radius: 1rem;
     opacity: 0;
     transition: 2s;
-    background-color: rgb(255, 255, 255, 0.8);
+    background-color: rgb(255, 188, 237, 0.8);
     box-shadow: 0 5px 10px rgba(27, 103, 210, 0.2);
 }
 
@@ -203,11 +245,12 @@ input {
     transition: 0.3s;
     padding: 0 1rem;
     border-radius: 1rem;
-    color: #000000;
+    color: #0f0e0e;
 }
 
 .list-items .item:hover {
-    background-color: #e7edfe;
+    background-color: #396bf5;
+    color: #e3e0e0;
 }
 
 .item .item-text {
@@ -216,22 +259,28 @@ input {
     color: #333;
 }
 
+.Metrik>div:nth-child(1) {
+    background-color: #F6E2FF;
+}
+
+.Metrik>div:nth-child(4) {
+    background-color: #F6E2FF;
+}
+
 .Metrik {
     display: flex;
-    justify-content: space-around;
     flex-wrap: wrap;
-    margin: 0.5rem;
 }
 
 .Metrik>div {
-    background-color: white;
-    border: 4px solid #e3e0e0;
     padding: 1rem;
     margin: 1rem;
     flex: 1 1 200px;
     text-align: center;
     border-radius: 1rem;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border: 4px solid #e3e0e0;
     font-size: 14px;
 }
 
@@ -239,7 +288,8 @@ input {
 .flexbox {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    gap: 0.5rem;
+    justify-content: space-evenly;
 }
 
 .flexbox h2 {
@@ -249,9 +299,7 @@ input {
 .chart-container {
     flex: 1 1 48%;
     max-width: 48%;
-    height: auto;
     padding: 0 1rem;
-    margin: 0.5rem;
     text-align: center;
     border-radius: 1rem;
     text-align: center;
@@ -267,7 +315,6 @@ input {
     max-width: 48%;
     height: auto;
     padding: 1rem 1rem;
-    margin: 0.5rem;
     text-align: center;
     border-radius: 1rem;
     background-color: #ffffff;
@@ -291,8 +338,9 @@ input {
 
 /* Chart */
 canvas {
+    align-items: center;
     justify-content: center;
-    height: 16rem;
+    height: 20rem;
     width: 100%;
 }
 
@@ -301,11 +349,11 @@ canvas {
 }
 
 
-
 /* tabel  */
+
 table th {
     background-color: #2c3a4e;
-    color: #f3f2f2;
+    color: #ffffff;
     text-align: center;
 }
 
@@ -321,43 +369,37 @@ table th {
     color: #fff;
 }
 
-.filter input[type="date"] {
-    border: 1px solid;
-    padding-top: 5px;
-    margin-left: 20px;
-}
-
 
 /* Insight */
 
 .insight {
+    display: flex;
+    min-height: 100vh;
     color: white;
-    align-items: center;
-    padding: 9rem 4% 1.4rem;
+    padding: 9rem 2% 0;
 }
 
-.content {
-    display: flex;
-    justify-content: space-between;
+#kiri {
+    width: 70%;
+}
+
+#kanan {
+    align-items: center;
 }
 
 #kiri #judul {
     font-size: 40px;
 }
 
+#paragraph h1,
 #judul span {
-    background-color: rgb(193, 43, 193);
-    padding: 5px 20px;
-    display: inline-block;
-}
-
-#paragraph h1 {
-    margin-top: 120px;
+    margin-top: 100px;
     background-color: rgb(193, 43, 193);
     padding: 0.4em;
     line-height: 1;
-    font-size: 30px;
+    font-size: 40px;
     justify-content: center;
+    align-items: center;
     position: relative;
     display: inline-block;
 }
@@ -367,13 +409,13 @@ table th {
     text-align: justify;
     line-height: 1.4;
     width: 80%;
-
 }
 
 .list_kanan {
     display: flex;
     color: black;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
+    width: 100%;
 
 }
 
@@ -381,13 +423,12 @@ table th {
     width: 50px;
     font-size: 1.5rem;
     text-align: center;
-    background-color: white;
     padding-top: 13px;
     padding-bottom: 13px;
     font-size: 25px;
     font-weight: bold;
     align-content: center;
-
+    background-color: white;
 }
 
 .text_list {
@@ -404,41 +445,38 @@ table th {
     min-height: 50vh;
     color: white;
     align-items: center;
-    padding: 6rem 4% 1.4rem;
+    padding: 5rem 2% 1.4rem;
 }
 
 #teamjudul {
     align-content: center;
     justify-content: center;
     margin: auto;
+    line-height: 1;
+    padding: 0.2em;
 }
 
 #teamjudul h1 {
-    padding: 0.2em;
-    line-height: 1;
     font-size: 50px;
     position: relative;
 }
 
 #teamjudul h2 {
     background-color: rgb(193, 43, 193);
-    padding: 0.2em;
-    line-height: 1;
     font-size: 50px;
     justify-content: center;
     position: relative;
 }
 
-
 .team .row {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 0 6rem;
+    justify-content: space-between;
+    gap: 0 10rem;
 }
 
 .photo-item {
-    flex: 1 1 12rem;
+    flex: 1 1 5rem;
     text-align: center;
     margin-top: 0;
     margin-bottom: 0;
@@ -473,8 +511,20 @@ footer {
 /* Responsif */
 /* Laptop */
 @media (max-width: 1480px) {
-    html {
-        font-size: 70%;
+
+    .landing-Page .text {
+        padding: 0 2%;
+        max-width: 60%;
+    }
+
+    .text h1 {
+        font-size: 45px;
+    }
+
+    .text h2 {
+        font-size: 20px;
+        padding: 0.5rem;
+        width: 88%;
     }
 
     nav ul li a {
@@ -495,11 +545,45 @@ footer {
 }
 
 
+
 /* Tablet */
 @media (max-width: 768px) {
     html {
         margin-top: 0.1rem;
     }
+
+    #kiri {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .insight {
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+
+    #paragraph p {
+        width: 100%;
+    }
+
+    .landing-Page .text {
+        padding: 0 3%;
+        max-width: 70%;
+    }
+
+    .text h1 {
+        font-size: 35px;
+    }
+
+    .text h2 {
+        font-size: 16px;
+        width: 80%;
+    }
+
+    .text p {
+        max-width: 80%;
+    }
+
 
 
     .logo-responsif {
@@ -562,6 +646,10 @@ footer {
         max-width: 100%;
     }
 
+    .table-container {
+        margin: 0rem;
+    }
+
     .menu-toggle.active div:nth-child(1) {
         transform: rotate(-45deg) translate(-5px, 6px);
     }
@@ -588,6 +676,36 @@ footer {
 
     /* Mobile */
     @media (max-width: 576px) {
+
+        #kiri {
+            width: 100%;
+            padding: 1rem;
+
+        }
+
+        .insight {
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        #paragraph p {
+            width: 100%;
+        }
+
+        .text h1 {
+            font-size: 25px;
+        }
+
+        .text h2 {
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .text p {
+            max-width: 100%;
+        }
+
+
         .menu-toggle {
             display: block;
         }
@@ -658,6 +776,10 @@ footer {
             max-width: 100%;
         }
 
+        .table-container {
+            margin: 0rem;
+        }
+
         #teamjudul h2 {
             padding: 0 5rem;
         }
@@ -670,11 +792,5 @@ footer {
 
         }
 
-        .list_kanan {
-            margin-bottom: 2rem;
-            display: inline-flex;
-            padding: 0 0.8rem;
-
-        }
     }
 }

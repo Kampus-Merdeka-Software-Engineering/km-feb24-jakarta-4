@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Pendeklarasian variabel untuk masing masing chart
-    let myChart = null;
+    let monthlyChart = null;
     let variationChart = null;
     let aovChart = null;
     let revenueChart = null;
@@ -11,6 +11,31 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //Pendeklarasian inisialisasi array periode date
     let monthsFilter = [true, true, true, true, true, true, true, true, true, true, true, true]
+
+
+    //Pendeklarasian warna
+    // Variabel Globar untuk warna chart (colors and border colors)
+    const colors = {
+        red: "rgba(255, 0, 0, 0.6)",
+        yellow: "rgba(255, 255, 0, 0.6)",
+        blue: "rgba(0, 0, 255, 0.6)",
+        green: "rgba(0, 128, 0, 0.6)",
+        pink: "rgba(255, 99, 132, 0.6)",
+        lightBlue: "rgba(54, 162, 235, 0.6)"
+    };
+
+    const borderColors = {
+        red: "rgba(255, 0, 0, 1)",
+        yellow: "rgba(255, 255, 0, 1)",
+        blue: "rgba(0, 0, 255, 1)",
+        green: "rgba(0, 128, 0, 1)"
+    };
+
+
+    //Pendeklarasian inisialisasi lokasi, kategori dan bulan
+    const locations = ["GuttenPlans", "EB Public Library", "Brunswick Sq Mall", "Earle Asphalt"];
+    const categories = ["Food", "Carbonated", "Non Carbonated", "Water"];
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     //Filterisasi Periode date
     async function selectedMonth(idx) {
@@ -57,14 +82,12 @@ document.addEventListener('DOMContentLoaded', function () {
         let totalCustomers = 0;
 
         // Inisialisasi total penjualan bulanan untuk setiap lokasi
-        let locations = ["GuttenPlans", "EB Public Library", "Brunswick Sq Mall", "Earle Asphalt"];
         let monthlyTotals = {};
         locations.forEach(location => {
             monthlyTotals[location] = new Array(12).fill(0);
         });
 
         // Inisialisasi total penjualan per kategori untuk setiap lokasi
-        let categories = ["Food", "Carbonated", "Non Carbonated", "Water"];
         let categoryTotals = {};
         locations.forEach(location => {
             categoryTotals[location] = {};
@@ -133,8 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
         averageMonthlyGrowth = calculateAverage(calculateMonthlyGrowthRate(monthlyRevenues)) * 100;
         console.log(monthlyTotals, aovMonthlyTotals, aovMonthlyCounts);
 
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
         // Menampilkan scorecard
         document.getElementById('revenue').innerHTML = "$" + revenue;
         document.getElementById('avg-monthly-growth').innerHTML = averageMonthlyGrowth.toFixed(2) + "%";
@@ -143,8 +164,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Siapkan datasets untuk total penjualan bulanan
         let monthlyDatasets = locations.map((location, index) => {
-            let colors = ["rgba(255, 0, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(0, 0, 255, 0.6)", "rgba(0, 128, 0, 0.6)"];
-            let borderColors = ["rgba(255, 0, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(0, 128, 0, 1)"];
+            // let colors = ["rgba(255, 0, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(0, 0, 255, 0.6)", "rgba(0, 128, 0, 0.6)"];
+            // let borderColors = ["rgba(255, 0, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(0, 128, 0, 1)"];
 
             return {
                 label: location,
@@ -157,8 +178,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Siapkan datasets untuk total penjualan per kategori
         let categoryDatasets = categories.map((category, index) => {
-            let colors = ["rgba(255, 0, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(0, 0, 255, 0.6)", "rgba(0, 128, 0, 0.6)"];
-            let borderColors = ["rgba(255, 0, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(0, 128, 0, 1)"];
+            // let colors = ["rgba(255, 0, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(0, 0, 255, 0.6)", "rgba(0, 128, 0, 0.6)"];
+            // let borderColors = ["rgba(255, 0, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(0, 128, 0, 1)"];
 
             return {
                 label: category,
@@ -171,8 +192,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // Siapkan datasets untuk variasi produk per kategori
         let variationDatasets = categories.map((category, index) => {
-            let colors = ["rgba(255, 0, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(0, 0, 255, 0.6)", "rgba(0, 128, 0, 0.6)"];
-            let borderColors = ["rgba(255, 0, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(0, 128, 0, 1)"];
+            // let colors = ["rgba(255, 0, 0, 0.6)", "rgba(255, 255, 0, 0.6)", "rgba(0, 0, 255, 0.6)", "rgba(0, 128, 0, 0.6)"];
+            // let borderColors = ["rgba(255, 0, 0, 1)", "rgba(255, 255, 0, 1)", "rgba(0, 0, 255, 1)", "rgba(0, 128, 0, 1)"];
 
             return {
                 label: category,
@@ -236,11 +257,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Siapkan dataset untuk pie chart payment
         var paymentLabels = Object.keys(payment);
         var paymentData = paymentLabels.map(label => payment[label]);
-        // Data label untuk pie chart
-        // var paymentLabels = ["Pembayaran Lunas", "Pembayaran Tertunda"];
-        // // Data nilai untuk pie chart
-        // var paymentData = [75, 25]; // Contoh data, ubah sesuai kebutuhan
-
 
         const legendMargin = {
             id: 'legendMargin',
@@ -258,8 +274,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
         // Buat grafik total penjualan bulanan
-        if (myChart) myChart.destroy();
-        myChart = new Chart("myChart", {
+        if (monthlyChart) monthlyChart.destroy();
+        monthlyChart = new Chart("monthlyChart", {
             type: "bar",
             data: {
                 labels: months,
