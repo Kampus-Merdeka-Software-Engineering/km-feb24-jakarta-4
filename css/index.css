@@ -502,8 +502,8 @@ table th {
 /* footer */
 footer {
     position: relatif;
-    background-color: #1c3457;
-    color: #fff;
+    background-color: rgb(255, 255, 255);
+    color: #0e0e0e;
     padding: 1.5rem;
     text-align: center;
     width: 100%;
@@ -809,7 +809,7 @@ button:hover {
         width: 40%;
         flex-direction: column;
         align-items: center;
-        background-color: rgba(37, 57, 85, 0.7);
+        background-color: rgb(255, 255, 255);
         box-shadow: -10px 0 10px rgba(250, 244, 244, 0.20);
         animation: slideFromRight 0.5s ease;
         height: 100vh;
@@ -825,7 +825,7 @@ button:hover {
     }
 
     nav ul li a {
-        color: #fff;
+        color: #0c0c0c;
     }
 
     .navbar ul .logo-responsif {
@@ -922,7 +922,7 @@ button:hover {
         width: 40%;
         flex-direction: column;
         align-items: center;
-        background-color: rgba(37, 57, 85, 0.7);
+        background-color: rgb(255, 255, 255);
         box-shadow: -10px 0 10px rgba(250, 244, 244, 0.20);
         animation: slideFromRight 0.5s ease;
         height: 100vh;
@@ -938,7 +938,7 @@ button:hover {
     }
 
     nav ul li a {
-        color: #fff;
+        color: #0d0d0d;
     }
 
     .navbar ul .logo-responsif {
