@@ -123,10 +123,6 @@ nav ul li a {
     color: black;
 }
 
-.navbar span:hover {
-    color: #f1f1f1;
-}
-
 nav ul li:last-child {
     margin-right: 0;
 }
@@ -137,6 +133,10 @@ nav ul li a:hover {
     border-radius: 0.5rem;
     color: rgb(237, 239, 215);
     border-bottom: 2px solid rgba(29, 113, 208, 0.532);
+}
+
+nav ul li a:hover span {
+    color: rgb(237, 239, 215);
 }
 
 /* Hamburger Icon */
